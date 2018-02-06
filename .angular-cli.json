@@ -1,0 +1,92 @@
+{
+  "$schema": "./node_modules/@nrwl/schematics/src/schema.json",
+  "project": {
+    "name": "ngx-toolkit",
+    "npmScope": "ngx-toolkit",
+    "latestMigration": "20180130-angular-devkit-schematics"
+  },
+  "e2e": {
+    "protractor": {
+      "config": "./protractor.conf.js"
+    }
+  },
+  "lint": [
+    {
+      "project": "./tsconfig.spec.json",
+      "exclude": "**/node_modules/**"
+    },
+    {
+      "project": "apps/demo/src/tsconfig.app.json",
+      "exclude": "**/node_modules/**"
+    },
+    {
+      "project": "apps/demo/e2e/tsconfig.e2e.json",
+      "exclude": "**/node_modules/**"
+    }
+  ],
+  "test": {
+    "karma": {
+      "config": "./karma.conf.js"
+    }
+  },
+  "defaults": {
+    "schematics": {
+      "collection": "@nrwl/schematics",
+      "postGenerate": "npm run format",
+      "newProject": [
+        "app",
+        "lib"
+      ]
+    },
+    "styleExt": "css",
+    "component": {}
+  },
+  "warnings": {
+    "typescriptMismatch": false
+  },
+  "apps": [
+    {
+      "name": "demo",
+      "root": "apps/demo/src",
+      "outDir": "dist/apps/demo",
+      "assets": [
+        "assets",
+        "favicon.ico"
+      ],
+      "index": "index.html",
+      "main": "main.ts",
+      "polyfills": "polyfills.ts",
+      "test": "../../../test.js",
+      "tsconfig": "tsconfig.app.json",
+      "testTsconfig": "../../../tsconfig.spec.json",
+      "prefix": "app",
+      "styles": [
+        "styles.css"
+      ],
+      "scripts": [],
+      "environmentSource": "environments/environment.ts",
+      "environments": {
+        "dev": "environments/environment.ts",
+        "prod": "environments/environment.prod.ts"
+      }
+    },
+    {
+      "name": "cookie",
+      "root": "libs/cookie/src",
+      "test": "../../../test.js",
+      "appRoot": ""
+    },
+    {
+      "name": "device",
+      "root": "libs/device/src",
+      "test": "../../../test.js",
+      "appRoot": ""
+    },
+    {
+      "name": "logger",
+      "root": "libs/logger/src",
+      "test": "../../../test.js",
+      "appRoot": ""
+    }
+  ]
+}

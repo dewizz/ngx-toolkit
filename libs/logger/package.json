@@ -1,0 +1,26 @@
+{
+  "$schema": "../../node_modules/ng-packagr/package.schema.json",
+  "name": "@ngx-toolkit/logger",
+  "version": "0.0.0-PLACEHOLDER",
+  "description": "Logger",
+  "homepage": "https://github.com/npetillon/ngx-toolkit",
+  "license": "MIT",
+  "author": "Nicolas Petillon",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/npetillon/ngx-toolkit"
+  },
+  "bugs": {
+    "url": "https://github.com/npetillon/ngx-toolkit/issues"
+  },
+  "peerDependencies": {
+    "@angular/core": "^5.0.0"
+  },
+  "ngPackage": {
+    "lib": {
+      "entryFile": "index.ts",
+      "licensePath": "../../LICENSE"
+    },
+    "dest": "../../dist/libs/logger"
+  }
+}
