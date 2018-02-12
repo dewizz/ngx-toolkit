@@ -19,5 +19,7 @@ TFILE="/tmp/out.tmp.$$"
 for module in dist/libs/*
 do
     sed "s/$PLACEHOLDER/$PACKAGE_VERSION/g" "$module/package.json" > $TFILE && mv $TFILE "$module/package.json"
+    MODULE_NAME=$(basename $module)
+    cp "libs/$MODULE_NAME/README.md" "$module"
     npm publish --access public "$module"
 done

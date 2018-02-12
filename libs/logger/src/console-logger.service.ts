@@ -1,10 +1,10 @@
 import { Inject, Injectable } from '@angular/core';
 import { Level } from './level.model';
 import { LOGGER_LEVEL } from './level.token';
-import { LoggerProvider } from './logger-provider.service';
+import { LoggerService } from './logger.service';
 
 @Injectable()
-export class ConsoleLoggerProvider extends LoggerProvider {
+export class ConsoleLoggerService extends LoggerService {
   constructor(@Inject(LOGGER_LEVEL) level: Level) {
     super();
 

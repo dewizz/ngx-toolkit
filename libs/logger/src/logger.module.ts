@@ -1,21 +1,21 @@
 import { ModuleWithProviders, NgModule, Provider, Type } from '@angular/core';
-import { ConsoleLoggerProvider } from './console-logger-provider.service';
+import { ConsoleLoggerService } from './console-logger.service';
 import { Level } from './level.model';
 import { LOGGER_LEVEL } from './level.token';
-import { LoggerProvider } from './logger-provider.service';
+import { LoggerService } from './logger.service';
 
 @NgModule()
 export class LoggerModule {
   static forRoot(level?: Level): ModuleWithProviders {
-    return LoggerModule.forRootWithProvider(ConsoleLoggerProvider, level);
+    return LoggerModule.forRootWithProvider(ConsoleLoggerService, level);
   }
 
-  static forRootWithProvider(provider: Type<LoggerProvider>, level?: Level): ModuleWithProviders {
-    let providers: Provider[] = [LoggerProvider];
+  static forRootWithProvider(provider: Type<LoggerService>, level?: Level): ModuleWithProviders {
+    let providers: Provider[] = [LoggerService];
     if (level) {
       providers = [
         provider,
-        { provide: LoggerProvider, useExisting: provider },
+        { provide: LoggerService, useExisting: provider },
         { provide: LOGGER_LEVEL, useValue: level }
       ];
     }

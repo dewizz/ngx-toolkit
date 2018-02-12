@@ -8,10 +8,9 @@ export class ServerCookieModule {
     return {
       ngModule: ServerCookieModule,
       providers: [
-        ServerCookieService,
         {
           provide: CookieService,
-          useExisting: ServerCookieService
+          useClass: ServerCookieService
         }
       ]
     };

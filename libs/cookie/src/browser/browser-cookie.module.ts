@@ -8,10 +8,9 @@ export class BrowserCookieModule {
     return {
       ngModule: BrowserCookieModule,
       providers: [
-        BrowserCookieService,
         {
           provide: CookieService,
-          useExisting: BrowserCookieService
+          useClass: BrowserCookieService
         }
       ]
     };

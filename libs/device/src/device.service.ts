@@ -1,7 +1,11 @@
-import { Inject, Injectable } from '@angular/core';
+import { Inject, Injectable, Optional, PLATFORM_ID } from '@angular/core';
 import { Device, DevicePlatform, DeviceType } from './device.model';
-import { USER_AGENT } from './device.token';
+import { isPlatformBrowser, isPlatformServer } from '@angular/common';
+import { Request } from 'express';
 
+/**
+ * @see https://github.com/spring-projects/spring-mobile
+ */
 @Injectable()
 export class DeviceService {
   private static KNOWN_MOBILE_USER_AGENT_PREFIXES: string[] = [
@@ -11,7 +15,6 @@ export class DeviceService {
     'alav',
     'alca',
     'amoi',
-    'audi',
     'avan',
     'benq',
     'bird',
@@ -123,14 +126,31 @@ export class DeviceService {
   ];
 
   private static KNOWN_TABLET_USER_AGENT_KEYWORDS: string[] = ['ipad', 'playbook', 'hp-tablet', 'kindle'];
+  private userAgent: string;
 
-  device: Device = new Device();
-
-  constructor(@Inject(USER_AGENT) userAgent: string) {
-    this.device = this.resolveDevice(userAgent);
+  constructor(
+    @Inject(PLATFORM_ID) platformId: string,
+    @Optional()
+    @Inject('REQUEST')
+    request: Request
+  ) {
+    if (isPlatformBrowser(platformId)) {
+      this.userAgent = window.navigator.userAgent;
+    } else if (isPlatformServer(platformId) && request) {
+      this.userAgent = request.get('User-Agent');
+    }
   }
 
-  resolveDevice(userAgent: string): Device {
+  private _device: Device;
+
+  get device() {
+    if (!this._device) {
+      this._device = Object.freeze(DeviceService.resolveDevice(this.userAgent));
+    }
+    return this._device;
+  }
+
+  static resolveDevice(userAgent: string): Device {
     if (!userAgent) {
       return new Device(DeviceType.NORMAL, DevicePlatform.UNKNOWN);
     }
@@ -145,7 +165,11 @@ export class DeviceService {
     if (userAgent.includes('ipad')) {
       return new Device(DeviceType.TABLET, DevicePlatform.IOS);
     }
-    if (!userAgent.includes('mobile')) {
+
+    const isMobile: boolean =
+      userAgent.includes('mobile') ||
+      DeviceService.KNOWN_MOBILE_USER_AGENT_KEYWORDS.some(mobileUserAgent => userAgent.includes(mobileUserAgent));
+    if (!isMobile) {
       // Android
       if (userAgent.includes('android')) {
         return new Device(DeviceType.TABLET, DevicePlatform.ANDROID);
@@ -179,7 +203,7 @@ export class DeviceService {
       return new Device(DeviceType.MOBILE, DevicePlatform.IOS);
     }
     // From keywords
-    if (DeviceService.KNOWN_MOBILE_USER_AGENT_KEYWORDS.some(mobileUserAgent => userAgent.includes(mobileUserAgent))) {
+    if (isMobile) {
       return new Device(DeviceType.MOBILE, DevicePlatform.UNKNOWN);
     }
 
