@@ -16,7 +16,7 @@
   "peerDependencies": {
     "@angular/core": "^5.0.0",
     "@angular/common": "^5.0.0",
-    "express": "^4.15.2"
+    "@types/express": "~4.0.35"
   },
   "ngPackage": {
     "lib": {
