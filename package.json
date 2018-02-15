@@ -1,12 +1,12 @@
 {
   "name": "ngx-toolkit",
-  "version": "1.0.0-beta.2",
+  "version": "1.0.0-beta.3",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "test": "ng test --watch false",
+    "test": "ng test --watch false --code-coverage",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "apps:affected": "./node_modules/.bin/nx affected apps",
