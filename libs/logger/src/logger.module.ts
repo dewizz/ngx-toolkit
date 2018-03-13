@@ -6,18 +6,12 @@ import { LoggerService } from './logger.service';
 
 @NgModule()
 export class LoggerModule {
-  static forRoot(level?: Level): ModuleWithProviders {
-    return LoggerModule.forRootWithProvider(ConsoleLoggerService, level);
-  }
-
-  static forRootWithProvider(provider: Type<LoggerService>, level?: Level): ModuleWithProviders {
-    let providers: Provider[] = [LoggerService];
+  static forRoot(level: Level = null, provider: Type<LoggerService> = ConsoleLoggerService): ModuleWithProviders {
+    let providers: Provider[];
     if (level) {
-      providers = [
-        provider,
-        { provide: LoggerService, useExisting: provider },
-        { provide: LOGGER_LEVEL, useValue: level }
-      ];
+      providers = [{ provide: LOGGER_LEVEL, useValue: level }, { provide: LoggerService, useClass: provider }];
+    } else {
+      providers = [LoggerService];
     }
 
     return {

@@ -130,7 +130,7 @@ export class WinstonLoggerService extends LoggerService {
 }
 ```
 
-To register WinstonLoggerService in the Angular application, provide the `LoggerModule` with `forRoot(provider: Type<LoggerService>, level?: Level)` as:
+To register WinstonLoggerService in the Angular application, provide the `LoggerModule` with `forRoot(level?: Level, provider?: Type<LoggerService>,)` as:
 
 ```typescript
 import { NgModule, isDevMode }      from '@angular/core';
@@ -143,7 +143,7 @@ import { AppComponent }  from './app.component';
 const LOG_LEVEL: Level = isDevMode() ? Level.INFO : Level.ERROR;
 
 @NgModule({
-  imports: [ BrowserModule, LoggerModule.forRoot(WinstonLoggerService, LOG_LEVEL) ],
+  imports: [ BrowserModule, LoggerModule.forRoot(LOG_LEVEL, WinstonLoggerService) ],
   declarations: [ AppComponent ],
   bootstrap: [ AppComponent ]
 })
