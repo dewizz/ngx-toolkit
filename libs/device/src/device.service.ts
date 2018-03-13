@@ -1,12 +1,8 @@
-import { Inject, Injectable, Optional, PLATFORM_ID } from '@angular/core';
 import { Device, DevicePlatform, DeviceType } from './device.model';
-import { isPlatformBrowser, isPlatformServer } from '@angular/common';
-import { Request } from 'express';
 
 /**
  * @see https://github.com/spring-projects/spring-mobile
  */
-@Injectable()
 export class DeviceService {
   private static KNOWN_MOBILE_USER_AGENT_PREFIXES: string[] = [
     'w3c ',
@@ -126,29 +122,6 @@ export class DeviceService {
   ];
 
   private static KNOWN_TABLET_USER_AGENT_KEYWORDS: string[] = ['ipad', 'playbook', 'hp-tablet', 'kindle'];
-  private userAgent: string;
-
-  constructor(
-    @Inject(PLATFORM_ID) platformId: string,
-    @Optional()
-    @Inject('REQUEST')
-    request: Request
-  ) {
-    if (isPlatformBrowser(platformId)) {
-      this.userAgent = window.navigator.userAgent;
-    } else if (isPlatformServer(platformId) && request) {
-      this.userAgent = request.get('User-Agent');
-    }
-  }
-
-  private _device: Device;
-
-  get device() {
-    if (!this._device) {
-      this._device = Object.freeze(DeviceService.resolveDevice(this.userAgent));
-    }
-    return this._device;
-  }
 
   static resolveDevice(userAgent: string): Device {
     if (!userAgent) {
