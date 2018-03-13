@@ -3,15 +3,15 @@
   "name": "@ngx-toolkit/device",
   "version": "0.0.0-PLACEHOLDER",
   "description": "Device",
-  "homepage": "https://github.com/npetillon/ngx-toolkit",
+  "homepage": "https://github.com/dewizz/ngx-toolkit",
   "license": "MIT",
-  "author": "Nicolas Petillon",
+  "author": "Dewizz",
   "repository": {
     "type": "git",
-    "url": "https://github.com/npetillon/ngx-toolkit"
+    "url": "https://github.com/dewizz/ngx-toolkit"
   },
   "bugs": {
-    "url": "https://github.com/npetillon/ngx-toolkit/issues"
+    "url": "https://github.com/dewizz/ngx-toolkit/issues"
   },
   "peerDependencies": {
     "@angular/core": "^5.0.0"
