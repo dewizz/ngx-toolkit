@@ -1,6 +1,6 @@
 {
   "name": "ngx-toolkit",
-  "version": "1.0.0-beta.3",
+  "version": "5.0.0-beta.0",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -23,10 +23,11 @@
     "nx-migrate:skip": "./node_modules/.bin/nx migrate skip",
     "postinstall": "./node_modules/.bin/nx migrate check",
     "ng-packagr": "ng-packagr",
-    "build:libs": "npm run build:lib:device && npm run build:lib:cookie && npm run build:lib:logger",
+    "build:libs": "npm run build:lib:device && npm run build:lib:cookie && npm run build:lib:logger && npm run build:lib:spring",
     "build:lib:device": "ng-packagr -p libs/device/package.json",
     "build:lib:cookie": "ng-packagr -p libs/cookie/package.json",
-    "build:lib:logger": "ng-packagr -p libs/logger/package.json"
+    "build:lib:logger": "ng-packagr -p libs/logger/package.json",
+    "build:lib:spring": "ng-packagr -p libs/spring/package.json"
   },
   "private": true,
   "dependencies": {
