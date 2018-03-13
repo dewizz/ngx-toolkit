@@ -1,16 +1,14 @@
-import { Inject, Injectable, Optional } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
-import { CookieService } from '../cookie.service';
+import { CookieFactory } from '../cookie.service';
 import { CookieOptions } from '../cookie.model';
 
 @Injectable()
-export class BrowserCookieService extends CookieService {
+export class BrowserCookieFactory implements CookieFactory {
   private lastCookies = '';
   private cookies: { [key in string]: string } = {};
 
-  constructor(@Optional() cookieOptions: CookieOptions, @Inject(DOCUMENT) private document: any) {
-    super(cookieOptions);
-  }
+  constructor(@Inject(DOCUMENT) private document: any) {}
 
   getAll(): { [p: string]: string } {
     if (this.lastCookies !== this.document.cookie) {
@@ -27,7 +25,7 @@ export class BrowserCookieService extends CookieService {
     return this.cookies;
   }
 
-  protected saveCookie(key: string, data: string, options: CookieOptions): void {
+  save(key: string, data: string, options: CookieOptions): void {
     this.document.cookie = `${encodeURIComponent(key)}=${data ? encodeURIComponent(data) : ''}${
       options.expires ? `; expires=${(<Date>options.expires).toUTCString()}` : ''
     }${options.domain ? `; domain=${options.domain}` : ''}${options.path ? `; path=${options.path}` : ''}${

@@ -5,7 +5,7 @@
 
 # @ngx-toolkit/cookie
 
-> Angular CookieService implementation for Browser & Server platforms implementation.
+> Angular CookieService implementation for Browser & Server platforms.
 
 # Table of contents:
 * [Installation](#installation)
@@ -29,7 +29,8 @@ npm install @ngx-toolkit/cookie --save
 yarn add @ngx-toolkit/cookie
 ```
 
-Import `BrowserCookieModule` in the root Module of your application with `forRoot(level?: Level)` to choose your log level. If you don't specify a level, you haven't any log.
+Registered `CookieModule` in the root Module of your application with `forRoot(cookieOptions?: CookieOptions)` static method.
+*CookieOptions is optional, by default the path is set to '/' and cookies never expired.*
 
 ```typescript
 import { NgModule }      from '@angular/core';
@@ -185,7 +186,34 @@ class CookieOptions {
 ```
 
 # Universal Usage
-// TODO
+
+You just have to provide another `CookieFactory` implemantation.
+
+`ServerCookieFactory` implementation is available (works with express only).
+Sample with [@nguniversal/express-engine](https://github.com/angular/universal/tree/master/modules/express-engine): 
+
+```typescript
+import { NgModule }      from '@angular/core';
+import { ServerModule } from '@angular/platform-server';
+import { REQUEST, RESPONSE } from '@nguniversal/express-engine';
+import { CookieFactory, ServerCookieFactory } from '@ngx-toolkit/cookie';
+
+import { AppModule }  from './app.module';
+import { AppComponent }  from './app.component';
+
+@NgModule({
+  imports: [ AppModule, ServerModule ],
+  bootstrap: [ AppComponent ],
+  providers: [
+    {
+      provide: CookieFactory,
+      useClass: ServerCookieFactory,
+      deps: [REQUEST, RESPONSE]
+    }
+  ],
+})
+export class AppServerModule { }
+```
 
 ----
 

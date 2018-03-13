@@ -1,11 +1,11 @@
-import { CookieService } from '../cookie.service';
-import { BrowserCookieService } from './browser-cookie.service';
+import { CookieService } from './cookie.service';
+import { BrowserCookieFactory } from './browser/browser-cookie.factory';
 
-describe('BrowserCookieService', () => {
+describe('CookieService', () => {
   let service: CookieService;
 
   beforeEach(() => {
-    service = new BrowserCookieService(null, document);
+    service = new CookieService(null, new BrowserCookieFactory(document));
     service.clear();
   });
 

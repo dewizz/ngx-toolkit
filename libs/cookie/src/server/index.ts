@@ -1,1 +1,1 @@
-export { ServerCookieModule } from './server-cookie.module';
+export { ServerCookieFactory } from './server-cookie.factory';

@@ -1,19 +1,13 @@
-import { Inject, Injectable, Optional } from '@angular/core';
-import { REQUEST, RESPONSE } from './server.token';
+import { Injectable } from '@angular/core';
 import { CookieOptions as ExpressCookieOptions, Request, Response } from 'express';
-import { CookieService } from '../cookie.service';
+import { CookieFactory } from '../cookie.service';
 import { CookieOptions } from '../cookie.model';
 
 @Injectable()
-export class ServerCookieService extends CookieService {
+export class ServerCookieFactory implements CookieFactory {
   private cookies: { [key in string]: string };
 
-  constructor(
-    @Optional() cookieOptions: CookieOptions,
-    @Inject(REQUEST) request: Request,
-    @Inject(RESPONSE) private response: Response
-  ) {
-    super(cookieOptions);
+  constructor(request: Request, private response: Response) {
     this.cookies = Object.assign({}, request.cookies);
   }
 
@@ -21,7 +15,7 @@ export class ServerCookieService extends CookieService {
     return this.cookies;
   }
 
-  protected saveCookie(key: string, data: string, options: CookieOptions): void {
+  save(key: string, data: string, options: CookieOptions): void {
     if (!data) {
       delete this.cookies[key];
       this.response.clearCookie(key, <ExpressCookieOptions>options);
