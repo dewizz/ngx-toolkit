@@ -87,6 +87,12 @@
       "root": "libs/logger/src",
       "test": "../../../test.js",
       "appRoot": ""
+    },
+    {
+      "name": "spring",
+      "root": "libs/spring/src",
+      "test": "../../../test.js",
+      "appRoot": ""
     }
   ]
 }

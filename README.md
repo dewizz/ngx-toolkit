@@ -18,6 +18,7 @@ The packages from this repository are published as scoped packages under [@ngx-t
 - [@ngx-toolkit/cookie](https://github.com/npetillon/ngx-toolkit/blob/master/libs/cookie/README.md) - Cookie Service
 - [@ngx-toolkit/device](https://github.com/npetillon/ngx-toolkit/blob/master/libs/device/README.md) - Device detection
 - [@ngx-toolkit/logger](https://github.com/npetillon/ngx-toolkit/blob/master/libs/logger/README.md) - Logger Service 
+- [@ngx-toolkit/spring](https://github.com/npetillon/ngx-toolkit/blob/master/libs/spring/README.md) - Spring Utilities
 
 ----
 
