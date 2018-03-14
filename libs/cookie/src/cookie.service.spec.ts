@@ -1,11 +1,13 @@
-import { CookieService } from './cookie.service';
+import { CookieFactory, CookieService, DATE_MAX_EXPIRES } from './cookie.service';
 import { BrowserCookieFactory } from './browser/browser-cookie.factory';
 
 describe('CookieService', () => {
   let service: CookieService;
+  let factory: CookieFactory;
 
   beforeEach(() => {
-    service = new CookieService(null, new BrowserCookieFactory(document));
+    factory = new BrowserCookieFactory(document);
+    service = new CookieService(null, factory);
     service.clear();
   });
 
@@ -27,6 +29,8 @@ describe('CookieService', () => {
     const cookieKey = 'cookie_name';
     const cookieValue = 'cookie_value';
 
+    service.setItem(null);
+
     service.setItem(cookieKey, cookieValue);
     expect(service.hasItem(cookieKey)).toBeTruthy();
     expect(service.getItem(cookieKey)).toBe(cookieValue);
@@ -44,5 +48,23 @@ describe('CookieService', () => {
     expect(service.keys()).toEqual([cookieKey1, cookieKey2]);
     expect(service.length).toBe(2);
     expect(service.key(1)).toEqual(cookieKey2);
+    expect(service.key(2)).toEqual(null);
+  });
+
+  it('check default options', () => {
+    spyOn(factory, 'save');
+
+    service.setItem('test', 'test');
+    expect(factory.save).toHaveBeenCalledWith('test', 'test', { path: '/', expires: DATE_MAX_EXPIRES });
+
+    service.setItem('test', 'test', { path: '/toto' });
+    expect(factory.save).toHaveBeenCalledWith('test', 'test', { path: '/toto', expires: DATE_MAX_EXPIRES });
+
+    service.setItem('test', 'test', { path: '/toto', domain: 'dewizz.com' });
+    expect(factory.save).toHaveBeenCalledWith('test', 'test', {
+      path: '/toto',
+      expires: DATE_MAX_EXPIRES,
+      domain: 'dewizz.com'
+    });
   });
 });

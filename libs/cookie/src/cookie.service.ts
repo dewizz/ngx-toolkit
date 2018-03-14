@@ -2,7 +2,7 @@ import { Inject, Injectable, Optional } from '@angular/core';
 import { CookieOptions } from './cookie.model';
 import { COOKIE_OPTIONS } from './cookie.token';
 
-const DATE_MAX_EXPIRES: Date = new Date('Fri, 31 Dec 9999 23:59:59 GMT');
+export const DATE_MAX_EXPIRES: Date = new Date('Fri, 31 Dec 9999 23:59:59 GMT');
 export const DEFAULT_COOKIE_OPTIONS: CookieOptions = {
   path: '/',
   expires: Infinity

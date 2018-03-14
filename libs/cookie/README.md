@@ -10,8 +10,11 @@
 
 # Table of contents:
 * [Installation](#installation)
-* [Usage](#usage)
+* [Usage with...](#usage)
+  * [annotation](#usage-annotation)
+  * [service](#usage-service)
 * [API](#api)
+  * [Cookie](#cookie)
   * [CookieService](#cookieservice)
   * [CookieOptions](#cookieoptions)
 * [Universal Usage](#universal-usage)
@@ -50,6 +53,28 @@ export class AppModule { }
 
 # Usage
 
+## <a name="usage-annotation"></a>Annotation
+```typescript
+import { Component, OnInit } from '@angular/core';
+import { Cookie } from '@ngx-toolkit/cookie';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent implements OnInit {
+  
+  @Cookie('accept-cookie')
+  acceptedCookie: boolean;
+  
+  acceptCookie() {
+    this.acceptedCookie = true;
+  }
+}
+```
+
+## <a name="usage-service"></a>Service
 ```typescript
 import { Component, OnInit } from '@angular/core';
 import { CookieService } from '@ngx-toolkit/cookie';
@@ -61,22 +86,35 @@ import { CookieService } from '@ngx-toolkit/cookie';
 })
 export class AppComponent implements OnInit {
   
-  showAcceptCookie: boolean;
+  acceptedCookie: boolean;
   
   constructor(private cookieService: CookieService) {}
 
   ngOnInit() {
-    this.showAcceptCookie = this.cookieService.getItem('accept-cookie') !== 'true';
+    this.acceptedCookie = this.cookieService.getItem('accept-cookie') === 'true';
   }
   
-  closeAcceptCookie() {
+  acceptCookie() {
     this.cookieService.setItem('accept-cookie', 'true');
-    this.showAcceptCookie = false;
+    this.acceptedCookie = true;
   }
 }
 ```
 
 # API
+
+## Cookie
+
+Cookie annotation:
+```typescript
+/**
+ * Get / Set cookie 
+ * @param {string} name (default is the property name)
+ * @param {CookieOptions} options (to override default options)
+ */
+@Cookie(name?: string, options?: CookieOptions)
+property: any;
+```
 
 ## CookieService
 

@@ -1,9 +1,16 @@
-import { ModuleWithProviders, NgModule } from '@angular/core';
-import { CookieService, CookieFactory } from './cookie.service';
+import { APP_INITIALIZER, ModuleWithProviders, NgModule } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { CookieFactory, CookieService } from './cookie.service';
 import { CookieOptions } from './cookie.model';
+import { COOKIE_DECORATOR_DATA } from './cookie.decorator';
 import { COOKIE_OPTIONS } from './cookie.token';
 import { BrowserCookieFactory } from './browser';
-import { DOCUMENT } from '@angular/common';
+
+export function initData(cookieService: CookieService): Function {
+  return () => {
+    COOKIE_DECORATOR_DATA.cookieService = cookieService;
+  };
+}
 
 @NgModule()
 export class CookieModule {
@@ -25,6 +32,12 @@ export class CookieModule {
         {
           provide: COOKIE_OPTIONS,
           useValue: cookieOptions
+        },
+        {
+          provide: APP_INITIALIZER,
+          useFactory: initData,
+          deps: [CookieService],
+          multi: true
         }
       ]
     };
