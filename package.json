@@ -41,12 +41,7 @@
     "@angular/router": "^5.2.0",
     "core-js": "^2.4.1",
     "rxjs": "^5.5.6",
-    "zone.js": "^0.8.19",
-    "@nrwl/nx": "0.7.3",
-    "@ngrx/effects": "4.1.1",
-    "@ngrx/router-store": "4.1.1",
-    "@ngrx/store": "4.1.1",
-    "@ngrx/store-devtools": "4.0.0"
+    "zone.js": "^0.8.19"
   },
   "devDependencies": {
     "@angular/cli": "file:.angular_cli165.tgz",
