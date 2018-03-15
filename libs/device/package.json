@@ -2,10 +2,26 @@
   "$schema": "../../node_modules/ng-packagr/package.schema.json",
   "name": "@ngx-toolkit/device",
   "version": "0.0.0-PLACEHOLDER",
-  "description": "Device",
+  "description": "Angular device user-agent detection with Universal support",
   "homepage": "https://github.com/dewizz/ngx-toolkit",
   "license": "MIT",
   "author": "Dewizz",
+  "keywords": [
+    "angular",
+    "angular2",
+    "angular4",
+    "angular5",
+    "aot",
+    "ngx",
+    "ng2",
+    "ng",
+    "ngx-toolkit",
+    "universal",
+    "user-agent",
+    "decorator",
+    "device",
+    "device-detection"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/dewizz/ngx-toolkit"
