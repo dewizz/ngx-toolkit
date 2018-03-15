@@ -4,3 +4,4 @@ export { CookieFactory, CookieService } from './src/cookie.service';
 export { CookieModule } from './src/cookie.module';
 export { BrowserCookieFactory } from './src/browser';
 export { ServerCookieFactory } from './src/server';
+export { Cookie } from './src/cookie.decorator';
