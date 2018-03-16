@@ -11,16 +11,16 @@ export class BrowserCookieFactory implements CookieFactory {
   constructor(@Inject(DOCUMENT) private document: any) {}
 
   getAll(): { [p: string]: string } {
-    if (this.lastCookies !== this.document.cookie) {
-      this.lastCookies = this.document.cookie;
+    const cookiesStr: string = this.document.cookie;
+    if (this.lastCookies !== cookiesStr) {
+      this.lastCookies = cookiesStr;
 
-      this.cookies = Object.assign(
-        {},
-        ...this.document.cookie.split('; ').map(cookie => {
-          const cookieSplited: string[] = cookie.split('=');
-          return { [decodeURIComponent(cookieSplited[0])]: decodeURIComponent(cookieSplited[1]) };
-        })
-      );
+      const cookies: { [key in string]: string } = {};
+      cookiesStr.split('; ').forEach(cookie => {
+        const cookieSplited: string[] = cookie.split('=');
+        cookies[decodeURIComponent(cookieSplited[0])] = decodeURIComponent(cookieSplited[1]);
+      });
+      this.cookies = cookies;
     }
     return this.cookies;
   }

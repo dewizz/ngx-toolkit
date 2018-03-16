@@ -6,20 +6,22 @@ import { COOKIE_DECORATOR_DATA } from './cookie.decorator';
 import { COOKIE_OPTIONS } from './cookie.token';
 import { BrowserCookieFactory } from './browser';
 
-export function initData(cookieService: CookieService): Function {
-  return () => {
-    COOKIE_DECORATOR_DATA.cookieService = cookieService;
-  };
+export function setupCookieDecorator(cookieService: CookieService) {
+  COOKIE_DECORATOR_DATA.cookieService = cookieService;
+  return () => null;
 }
 
 @NgModule()
 export class CookieModule {
+  // static cookieService: CookieService = null;// = new CookieService(null, new BrowserCookieFactory(document));
+
   /**
    * In root module to provide the CookieService & CookieOptions
    * @param {CookieOptions} cookieOptions
    * @returns {ModuleWithProviders}
    */
   static forRoot(cookieOptions?: CookieOptions): ModuleWithProviders {
+    console.log('ok');
     return {
       ngModule: CookieModule,
       providers: [
@@ -35,7 +37,7 @@ export class CookieModule {
         },
         {
           provide: APP_INITIALIZER,
-          useFactory: initData,
+          useFactory: setupCookieDecorator,
           deps: [CookieService],
           multi: true
         }

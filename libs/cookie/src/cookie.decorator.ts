@@ -15,7 +15,7 @@ export const COOKIE_DECORATOR_DATA: CookieDecoratorData = {};
  */
 export function Cookie(name?: string, options?: CookieOptions) {
   return function(target: any, key: string) {
-    if (delete target[key]) {
+    if (COOKIE_DECORATOR_DATA.cookieService && delete target[key]) {
       const cookieName: string = name || key;
 
       Object.defineProperty(target, key, {
