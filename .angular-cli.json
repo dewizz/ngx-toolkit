@@ -71,6 +71,12 @@
       }
     },
     {
+      "name": "cache",
+      "root": "libs/cache/src",
+      "test": "../../../test.js",
+      "appRoot": ""
+    },
+    {
       "name": "cookie",
       "root": "libs/cookie/src",
       "test": "../../../test.js",
