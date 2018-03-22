@@ -10,10 +10,10 @@ export const COOKIE_DECORATOR_DATA: CookieDecoratorData = {};
  * Get / Set cookie
  * @param {string} name (default is the property name)
  * @param {CookieOptions} options (to override default options)
- * @returns {(target: any, key: string) => void}
+ * @returns {PropertyDecorator}
  * @constructor
  */
-export function Cookie(name?: string, options?: CookieOptions) {
+export function Cookie(name?: string, options?: CookieOptions): PropertyDecorator {
   return function(target: any, key: string) {
     if (COOKIE_DECORATOR_DATA.cookieService && delete target[key]) {
       const cookieName: string = name || key;
