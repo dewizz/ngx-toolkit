@@ -93,6 +93,12 @@
       "root": "libs/spring/src",
       "test": "../../../test.js",
       "appRoot": ""
+    },
+    {
+      "name": "utils",
+      "root": "libs/utils/src",
+      "test": "../../../test.js",
+      "appRoot": ""
     }
   ]
 }
