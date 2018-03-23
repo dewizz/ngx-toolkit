@@ -240,13 +240,17 @@ import { CookieFactory, ServerCookieFactory } from '@ngx-toolkit/cookie';
 import { AppModule }  from './app.module';
 import { AppComponent }  from './app.component';
 
+export function newCookieFactory(req: any, res: any) {
+  return new ServerCookieFactory(req, res);
+}
+
 @NgModule({
   imports: [ AppModule, ServerModule ],
   bootstrap: [ AppComponent ],
   providers: [
     {
       provide: CookieFactory,
-      useClass: ServerCookieFactory,
+      useFactory: newCookieFactory,
       deps: [REQUEST, RESPONSE]
     }
   ],
