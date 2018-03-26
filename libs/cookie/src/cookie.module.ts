@@ -11,30 +11,31 @@ export function setupCookieDecorator(cookieService: CookieService) {
   return () => null;
 }
 
+export function newCookieFactory(document: any) {
+  return new BrowserCookieFactory(document);
+}
+
 @NgModule()
 export class CookieModule {
-  // static cookieService: CookieService = null;// = new CookieService(null, new BrowserCookieFactory(document));
-
   /**
    * In root module to provide the CookieService & CookieOptions
    * @param {CookieOptions} cookieOptions
    * @returns {ModuleWithProviders}
    */
   static forRoot(cookieOptions?: CookieOptions): ModuleWithProviders {
-    console.log('ok');
     return {
       ngModule: CookieModule,
       providers: [
-        CookieService,
-        {
-          provide: CookieFactory,
-          useClass: BrowserCookieFactory,
-          deps: [DOCUMENT]
-        },
         {
           provide: COOKIE_OPTIONS,
           useValue: cookieOptions
         },
+        {
+          provide: CookieFactory,
+          useFactory: newCookieFactory,
+          deps: [DOCUMENT]
+        },
+        CookieService,
         {
           provide: APP_INITIALIZER,
           useFactory: setupCookieDecorator,
