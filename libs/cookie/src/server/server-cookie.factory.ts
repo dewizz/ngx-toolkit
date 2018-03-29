@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { CookieOptions as ExpressCookieOptions, Request, Response } from 'express';
 import { CookieFactory } from '../cookie.service';
 import { CookieOptions } from '../cookie.model';
 
@@ -7,7 +6,7 @@ import { CookieOptions } from '../cookie.model';
 export class ServerCookieFactory implements CookieFactory {
   private cookies: { [key in string]: string };
 
-  constructor(request: Request, private response: Response) {
+  constructor(request: any, private response: any) {
     this.cookies = Object.assign({}, request.cookies);
   }
 
@@ -18,10 +17,10 @@ export class ServerCookieFactory implements CookieFactory {
   save(key: string, data: string, options: CookieOptions): void {
     if (!data) {
       delete this.cookies[key];
-      this.response.clearCookie(key, <ExpressCookieOptions>options);
+      this.response.clearCookie(key, options);
     } else {
       this.cookies[key] = data;
-      this.response.cookie(key, data, <ExpressCookieOptions>options);
+      this.response.cookie(key, data, options);
     }
   }
 }

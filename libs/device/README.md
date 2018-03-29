@@ -104,13 +104,12 @@ Sample with [@nguniversal/express-engine](https://github.com/angular/universal/t
 import { NgModule }      from '@angular/core';
 import { ServerModule } from '@angular/platform-server';
 import { REQUEST } from '@nguniversal/express-engine';
-import { Request } from 'express';
 import { USER_AGENT } from '@ngx-toolkit/device';
 
 import { AppModule }  from './app.module';
 import { AppComponent }  from './app.component';
 
-export function userAgentFactory(request: Request) {
+export function userAgentFactory(request: any) {
   return request.get('User-Agent');
 }
 
