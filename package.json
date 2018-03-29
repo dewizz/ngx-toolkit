@@ -51,7 +51,6 @@
     "@angular/language-service": "^5.2.0",
     "@nrwl/schematics": "0.7.3",
     "@schematics/angular": "0.1.17",
-    "@types/express": "~4.0.35",
     "@types/jasmine": "~2.5.53",
     "@types/jasminewd2": "~2.0.2",
     "@types/node": "~6.0.60",

@@ -15,15 +15,25 @@ export const COOKIE_DECORATOR_DATA: CookieDecoratorData = {};
  */
 export function Cookie(name?: string, options?: CookieOptions): PropertyDecorator {
   return function(target: any, key: string) {
-    if (COOKIE_DECORATOR_DATA.cookieService && delete target[key]) {
+    let _value: any;
+
+    if (delete target[key]) {
       const cookieName: string = name || key;
 
       Object.defineProperty(target, key, {
         get: function() {
-          return JSON.parse(COOKIE_DECORATOR_DATA.cookieService.getItem(cookieName));
+          if (COOKIE_DECORATOR_DATA.cookieService) {
+            return JSON.parse(COOKIE_DECORATOR_DATA.cookieService.getItem(cookieName));
+          } else {
+            return _value;
+          }
         },
         set: function(value) {
-          COOKIE_DECORATOR_DATA.cookieService.setItem(cookieName, JSON.stringify(value), options);
+          if (COOKIE_DECORATOR_DATA.cookieService) {
+            COOKIE_DECORATOR_DATA.cookieService.setItem(cookieName, JSON.stringify(value), options);
+          } else {
+            _value = value;
+          }
         },
         enumerable: true,
         configurable: true
