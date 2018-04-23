@@ -1,5 +1,4 @@
-import { HttpParams } from '@angular/common/http';
-import { HttpParamsOptions } from '@angular/common/http/src/params';
+import { HttpParameterCodec, HttpParams } from '@angular/common/http';
 
 export const DEFAULT_PAGEABLE_SIZE = 20;
 
@@ -14,7 +13,21 @@ export class PageRequest {
     this.sort = sort;
   }
 
-  toHttpParams(options?: HttpParamsOptions): HttpParams {
+  toHttpParams(
+    options: {
+      fromString?: string;
+      fromObject?: {
+        [param: string]: string | string[];
+      };
+      encoder?: HttpParameterCodec;
+    } = {} as {
+      fromString?: string;
+      fromObject?: {
+        [param: string]: string | string[];
+      };
+      encoder?: HttpParameterCodec;
+    }
+  ): HttpParams {
     const params: HttpParams = new HttpParams(options);
 
     // Add page & size
