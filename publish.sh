@@ -5,6 +5,9 @@ set -x
 # build libs
 npm run build:libs
 
+# remove archives
+rm -rf dist/libs/*.tgz
+
 # get current version
 PACKAGE_VERSION=$(cat package.json \
   | grep version \
