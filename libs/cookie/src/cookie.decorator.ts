@@ -4,6 +4,7 @@ import { CookieService } from './cookie.service';
 export interface CookieDecoratorData {
   cookieService?: CookieService;
 }
+
 export const COOKIE_DECORATOR_DATA: CookieDecoratorData = {};
 
 /**
@@ -23,14 +24,23 @@ export function Cookie(name?: string, options?: CookieOptions): PropertyDecorato
       Object.defineProperty(target, key, {
         get: function() {
           if (COOKIE_DECORATOR_DATA.cookieService) {
-            return JSON.parse(COOKIE_DECORATOR_DATA.cookieService.getItem(cookieName));
+            const cookieValue: string = COOKIE_DECORATOR_DATA.cookieService.getItem(cookieName);
+            try {
+              return JSON.parse(cookieValue);
+            } catch (e) {
+              return cookieValue;
+            }
           } else {
             return _value;
           }
         },
         set: function(value) {
           if (COOKIE_DECORATOR_DATA.cookieService) {
-            COOKIE_DECORATOR_DATA.cookieService.setItem(cookieName, JSON.stringify(value), options);
+            COOKIE_DECORATOR_DATA.cookieService.setItem(
+              cookieName,
+              typeof value === 'string' ? value : JSON.stringify(value),
+              options
+            );
           } else {
             _value = value;
           }
