@@ -1,17 +1,15 @@
-import { Queue } from './queue.decorator';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/timer';
-import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/concatMap';
-import {Subscription} from "rxjs/Subscription";
+import {Queue} from './queue.decorator';
+import {Observable, Subscription, throwError, timer} from 'rxjs';
+import {concatMap, delay, tap} from 'rxjs/operators';
 
 const WAIT_TIME = 50;
 const QUEUE_NUMBER = 2;
+
 class ClassTest {
   incr = 0;
 
   get waitObs(): Observable<any> {
-    return Observable.timer(WAIT_TIME);
+    return timer(WAIT_TIME);
   }
 
   @Queue(QUEUE_NUMBER)
@@ -22,9 +20,11 @@ class ClassTest {
 
   @Queue(QUEUE_NUMBER)
   obsErrorFunc(incr = 1): Subscription {
-    return this.waitObs
-      .concatMap(() => Observable.throw('error'))
-      .subscribe(() => {}, () => this.plus(incr));
+    return this.waitObs.pipe(
+      concatMap(() => throwError('error'))
+    )
+      .subscribe(() => {
+      }, () => this.plus(incr));
   }
 
   @Queue(QUEUE_NUMBER)
@@ -35,8 +35,8 @@ class ClassTest {
   @Queue(QUEUE_NUMBER)
   promiseErrorFunc(incr = 1): Promise<any> {
     return this.promiseSuccessFunc().then(() => {
-        throw new Error('error')
-      });
+      throw new Error('error');
+    });
   }
 
   @Queue(QUEUE_NUMBER)
@@ -58,19 +58,19 @@ class ClassTest {
 
 function testIt(classTest: ClassTest, fn: Function, done: DoneFn, firstPassValue: number = 2, secondPassValue: number = 3) {
   fn.apply(classTest);
-  fn.apply(classTest);
-  fn.apply(classTest);
-  Observable.timer(WAIT_TIME * .7).subscribe(() => {
+  timer(WAIT_TIME / 2).subscribe(() => {
+    fn.apply(classTest);
     fn.apply(classTest);
   });
 
-  Observable.timer(WAIT_TIME * 2.5)
-    .do(() => {
+  timer(WAIT_TIME * 2.1).pipe(
+    tap(() => {
       expect(classTest.incr).toEqual(firstPassValue);
 
       fn.apply(classTest);
-    })
-    .concatMap(() => Observable.timer(WAIT_TIME * 1.5))
+    }),
+    delay(WAIT_TIME * 1.1)
+  )
     .subscribe(() => {
       expect(classTest.incr).toEqual(secondPassValue);
       done();

@@ -1,7 +1,4 @@
-import 'rxjs/add/observable/timer';
-import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/concatMap';
-import {Once} from "@ngx-toolkit/utils";
+import {Once} from './once.decorator';
 
 describe('OnceDecorator', () => {
   it('should executed once', () => {

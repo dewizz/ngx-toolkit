@@ -15,3 +15,10 @@ export class Deferred<T> {
     Object.freeze(<Deferred<any>>this);
   }
 }
+
+/**
+ * Determine if the argument is shaped like a Promise
+ */
+export function isPromise(obj: any): obj is Promise<any> {
+  return !!obj && typeof obj.then === 'function';
+}

@@ -8,9 +8,6 @@
   "author": "Dewizz",
   "keywords": [
     "angular",
-    "angular2",
-    "angular4",
-    "angular5",
     "aot",
     "ngx",
     "ng2",
@@ -29,13 +26,6 @@
     "url": "https://github.com/dewizz/ngx-toolkit/issues"
   },
   "peerDependencies": {
-    "@angular/core": "^5.0.0"
-  },
-  "ngPackage": {
-    "lib": {
-      "entryFile": "index.ts",
-      "licensePath": "../../LICENSE"
-    },
-    "dest": "../../dist/libs/utils"
+    "@angular/core": "^6.0.0-rc.0 || ^6.0.0"
   }
 }

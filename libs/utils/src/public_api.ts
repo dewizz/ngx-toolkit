@@ -1,6 +1,7 @@
 /*
- * Public API Surface of spring
+ * Public API Surface of utils
  */
 
-export * from './lib/spring-data.model';
-
+export { Queue } from './lib/queue.decorator';
+export { Wait } from './lib/wait.decorator';
+export { Once } from './lib/once.decorator';

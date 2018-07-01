@@ -1,6 +1,5 @@
-import { Deferred } from './functions';
-import { isPromise } from 'rxjs/util/isPromise';
-import { Subscription } from 'rxjs/Subscription';
+import {Deferred, isPromise} from './functions';
+import {Subscription} from 'rxjs';
 
 export interface QueueData {
   queue: Function[];
@@ -10,11 +9,9 @@ export interface QueueData {
 /**
  * Put the method call in a queue and wait for a Promise / Subscription / method execution
  * /!\ the method result is modified => Return a Promise
- * @param {number} queue limit (default: no limit)
- * @param {string} queue name (default: method name)
  */
 export function Queue(limit?: number, name?: string): MethodDecorator {
-  return function(
+  return function (
     target: Object,
     propertyKey: string | symbol,
     descriptor: TypedPropertyDescriptor<any>
@@ -28,13 +25,13 @@ export function Queue(limit?: number, name?: string): MethodDecorator {
     const originalMethod = descriptor.value;
 
     // Change method
-    descriptor.value = function(...args: any[]) {
+    descriptor.value = function (...args: any[]) {
       // Push Future call
       const deferred: Deferred<any> = new Deferred<any>();
 
       // Ignore next call
       if (limit && data.queue.length >= limit) {
-        deferred.reject(new Error('Queue is full'));
+        deferred.reject('Queue is full');
       } else {
         data.queue.push(() => {
           try {
@@ -56,7 +53,7 @@ export function Queue(limit?: number, name?: string): MethodDecorator {
 
         // Queue
         data.promise = data.promise
-          // Call
+        // Call
           .then(() => data.queue[0].apply(this))
           // Pop
           .then(() => data.queue.pop(), () => data.queue.pop());
