@@ -2,11 +2,11 @@
 
 set -x
 
+# remove archives
+rm -rf dist/*
+
 # build libs
 npm run build:libs
-
-# remove archives
-rm -rf dist/libs/*.tgz
 
 # get current version
 PACKAGE_VERSION=$(cat package.json \
@@ -19,10 +19,8 @@ PLACEHOLDER="0.0.0-PLACEHOLDER"
 TFILE="/tmp/out.tmp.$$"
 
 # change version & publish each lib
-for module in dist/libs/*
+for module in dist/*
 do
     sed "s/$PLACEHOLDER/$PACKAGE_VERSION/g" "$module/package.json" > $TFILE && mv $TFILE "$module/package.json"
-    MODULE_NAME=$(basename $module)
-    cp "libs/$MODULE_NAME/README.md" "$module"
     npm publish --access public "$module"
 done

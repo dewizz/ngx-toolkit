@@ -1,6 +1,8 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
     "moduleResolution": "node",
@@ -14,15 +16,31 @@
       "es2017",
       "dom"
     ],
-    "baseUrl": ".",
     "paths": {
-      "@ngx-toolkit/*": [
-        "libs/*"
+      "cookie": [
+        "dist/cookie"
+      ],
+      "cookie/*": [
+        "dist/cookie/*"
+      ],
+      "device": [
+        "dist/device"
+      ],
+      "device/*": [
+        "dist/device/*"
+      ],
+      "logger": [
+        "dist/logger"
+      ],
+      "logger/*": [
+        "dist/logger/*"
+      ],
+      "spring": [
+        "dist/spring"
+      ],
+      "spring/*": [
+        "dist/spring/*"
       ]
     }
-  },
-  "exclude": [
-    "node_modules",
-    "tmp"
-  ]
+  }
 }
