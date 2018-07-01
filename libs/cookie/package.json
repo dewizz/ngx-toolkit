@@ -1,5 +1,4 @@
 {
-  "$schema": "../../node_modules/ng-packagr/package.schema.json",
   "name": "@ngx-toolkit/cookie",
   "version": "0.0.0-PLACEHOLDER",
   "description": "Angular cookie with Universal support",
@@ -30,14 +29,7 @@
     "url": "https://github.com/dewizz/ngx-toolkit/issues"
   },
   "peerDependencies": {
-    "@angular/core": "^5.0.0",
-    "@angular/common": "^5.0.0"
-  },
-  "ngPackage": {
-    "lib": {
-      "entryFile": "index.ts",
-      "licensePath": "../../LICENSE"
-    },
-    "dest": "../../dist/libs/cookie"
+    "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
+    "@angular/core": "^6.0.0-rc.0 || ^6.0.0"
   }
 }
