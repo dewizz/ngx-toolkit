@@ -1,5 +1,4 @@
 {
-  "$schema": "../../node_modules/ng-packagr/package.schema.json",
   "name": "@ngx-toolkit/device",
   "version": "0.0.0-PLACEHOLDER",
   "description": "Angular device user-agent detection with Universal support",
@@ -30,13 +29,6 @@
     "url": "https://github.com/dewizz/ngx-toolkit/issues"
   },
   "peerDependencies": {
-    "@angular/core": "^5.0.0"
-  },
-  "ngPackage": {
-    "lib": {
-      "entryFile": "index.ts",
-      "licensePath": "../../LICENSE"
-    },
-    "dest": "../../dist/libs/device"
+    "@angular/core": "^6.0.0-rc.0 || ^6.0.0"
   }
 }

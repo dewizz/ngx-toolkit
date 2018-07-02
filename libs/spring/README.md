@@ -31,7 +31,19 @@ Some [Spring Data Commons](https://github.com/spring-projects/spring-data-common
 
 - `Page<T>` type
 - `Sort(orders: string | string[] | Order[], direction: Direction = 'ASC')`
-- `PageRequest(page: number = 0, size: number = 20, sort?: Sort)` with `toHttpParams(options?: HttpParamsOptions)` method to convert value in request params
+- `PageRequest(page: number = 0, size: number = 20, sort?: Sort)` with `toHttpParams(options: {
+                                                                                         fromString?: string;
+                                                                                         fromObject?: {
+                                                                                             [param: string]: string | string[];
+                                                                                         };
+                                                                                         encoder?: HttpParameterCodec;
+                                                                                     } = {} as {
+                                                                                         fromString?: string;
+                                                                                         fromObject?: {
+                                                                                             [param: string]: string | string[];
+                                                                                         };
+                                                                                         encoder?: HttpParameterCodec;
+                                                                                     })` method to convert value in request params
 
 ----
 
