@@ -21,6 +21,7 @@ The packages from this repository are published as scoped packages under [@ngx-t
 - [@ngx-toolkit/device](https://github.com/dewizz/ngx-toolkit/blob/master/libs/device/README.md) - Device detection
 - [@ngx-toolkit/logger](https://github.com/dewizz/ngx-toolkit/blob/master/libs/logger/README.md) - Logger Service 
 - [@ngx-toolkit/spring](https://github.com/dewizz/ngx-toolkit/blob/master/libs/spring/README.md) - Spring Utilities
+- [@ngx-toolkit/utils](https://github.com/dewizz/ngx-toolkit/blob/master/libs/utils/README.md) - Common Utilities
 
 ----
 
