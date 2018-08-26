@@ -1,8 +1,6 @@
-import { Injectable } from '@angular/core';
-import { CookieFactory } from '../cookie.service';
-import { CookieOptions } from '../cookie.model';
+import {CookieFactory} from '../cookie.service';
+import {CookieOptions} from '../cookie.model';
 
-@Injectable()
 export class ServerCookieFactory implements CookieFactory {
   private cookies: { [key in string]: string };
 
