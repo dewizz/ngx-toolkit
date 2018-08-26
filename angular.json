@@ -122,6 +122,46 @@
         }
       }
     },
+    "cache": {
+      "root": "libs/cache",
+      "sourceRoot": "libs/cache/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/cache/tsconfig.lib.json",
+            "project": "libs/cache/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "project": "libs/cache/ng-package.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/cache/src/test.ts",
+            "tsConfig": "libs/cache/tsconfig.spec.json",
+            "karmaConfig": "libs/cache/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/cache/tsconfig.lib.json",
+              "libs/cache/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
     "cookie": {
       "root": "libs/cookie",
       "sourceRoot": "libs/cookie/src",
