@@ -1,6 +1,6 @@
-import { HttpParameterCodec, HttpParams } from '@angular/common/http';
+import {HttpParameterCodec, HttpParams} from '@angular/common/http';
 
-export const DEFAULT_PAGEABLE_SIZE = 20;
+export const DEFAULT_PAGEABLE_SIZE = 25;
 
 export class PageRequest {
   page: number;
@@ -28,11 +28,10 @@ export class PageRequest {
       encoder?: HttpParameterCodec;
     }
   ): HttpParams {
-    const params: HttpParams = new HttpParams(options);
-
+    let params: HttpParams = new HttpParams(options)
     // Add page & size
-    params.set('page', `${this.page}`);
-    params.set('size', `${this.size}`);
+      .set('page', `${this.page}`)
+      .set('size', `${this.size}`);
 
     // Add orders
     if (this.sort && this.sort.orders) {
@@ -46,7 +45,7 @@ export class PageRequest {
       );
 
       Object.keys(groupedSort).forEach(direction => {
-        params.append('sort', `${groupedSort[direction].join(',')},${direction}`);
+        params = params.append('sort', `${groupedSort[direction].join(',')},${direction}`);
       });
     }
 
