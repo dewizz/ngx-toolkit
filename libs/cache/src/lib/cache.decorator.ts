@@ -66,9 +66,9 @@ export function CacheResult(params?: CacheParams): MethodDecorator {
  */
 export function CacheKey(): ParameterDecorator {
   return (target: Object, propertyKey: string | symbol, parameterIndex: number) => {
-    const indices = Reflect.getMetadata(`${METADATA_KEY_CACHE_KEYS}_${propertyKey}`, target, propertyKey) || [];
+    const indices = Reflect.getMetadata(`${METADATA_KEY_CACHE_KEYS}_${propertyKey.toString()}`, target, propertyKey) || [];
     indices.push(parameterIndex);
-    Reflect.defineMetadata(`${METADATA_KEY_CACHE_KEYS}_${propertyKey}`, indices, target, propertyKey);
+    Reflect.defineMetadata(`${METADATA_KEY_CACHE_KEYS}_${propertyKey.toString()}`, indices, target, propertyKey);
   };
 }
 
@@ -85,7 +85,7 @@ export function CachePut(params?: CacheParamsInvoc): MethodDecorator {
     const originalMethod = descriptor.value;
     descriptor.value = function (...args: any[]) {
       const cache: Cache = getCache(target, params);
-      const indexValue: number = Reflect.getMetadata(`${METADATA_KEY_CACHE_VALUE}_${propertyKey}`, target, propertyKey);
+      const indexValue: number = Reflect.getMetadata(`${METADATA_KEY_CACHE_VALUE}_${propertyKey.toString()}`, target, propertyKey);
       const cacheKey: string = getCacheKey(target, propertyKey, args, indexValue);
 
       if (!params.afterInvocation && indexValue && indexValue >= 0 && indexValue < args.length) {
@@ -109,7 +109,7 @@ export function CachePut(params?: CacheParamsInvoc): MethodDecorator {
  */
 export function CacheValue(): ParameterDecorator {
   return (target: Object, propertyKey: string | symbol, parameterIndex: number) => {
-    Reflect.defineMetadata(`${METADATA_KEY_CACHE_VALUE}_${propertyKey}`, parameterIndex, target, propertyKey);
+    Reflect.defineMetadata(`${METADATA_KEY_CACHE_VALUE}_${propertyKey.toString()}`, parameterIndex, target, propertyKey);
   };
 }
 
@@ -202,7 +202,7 @@ function getCacheKey(target: Object, propertyKey: string | symbol, args: any[], 
     args = [];
   }
 
-  const indices: number[] = Reflect.getMetadata(`${METADATA_KEY_CACHE_KEYS}_${propertyKey}`, target, propertyKey);
+  const indices: number[] = Reflect.getMetadata(`${METADATA_KEY_CACHE_KEYS}_${propertyKey.toString()}`, target, propertyKey);
   if (indices) {
     args = args.filter((value: any, index: number) => indices.indexOf(index) !== -1 && cacheValueIndex !== index);
   } else if (cacheValueIndex !== -1) {
@@ -210,7 +210,7 @@ function getCacheKey(target: Object, propertyKey: string | symbol, args: any[], 
   }
 
   if (args.length === 0) {
-    throw new Error(`Couldn't generate key without params for '${propertyKey}' method of ${target.constructor.name}`);
+    throw new Error(`Couldn't generate key without params for '${propertyKey.toString()}' method of ${target.constructor.name}`);
   }
 
   return args.map(a => (JSON.stringify(a) || a.toString())).join('|');
