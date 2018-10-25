@@ -4,7 +4,7 @@ import { CookieFactory, CookieService } from './cookie.service';
 import { CookieOptions } from './cookie.model';
 import { COOKIE_DECORATOR_DATA } from './cookie.decorator';
 import { COOKIE_OPTIONS } from './cookie.token';
-import { BrowserCookieFactory } from './browser';
+import { BrowserCookieFactory } from './browser/index';
 
 export function setupCookieDecorator(cookieService: CookieService) {
   COOKIE_DECORATOR_DATA.cookieService = cookieService;
