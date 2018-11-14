@@ -7,4 +7,5 @@ export { LOGGER_LEVEL } from './lib/level.token';
 export { LoggerService } from './lib/logger.service';
 export { ConsoleLoggerService } from './lib/console-logger.service';
 export { LoggerModule } from './lib/logger.module';
+export { Log, Debug } from './lib/logger.decorator';
 export { logger } from './lib/logger.rxjs';
