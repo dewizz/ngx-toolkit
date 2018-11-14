@@ -12,6 +12,8 @@
 * [Usage](#usage)
 * [LoggerService](#loggerservice)
 * [Custom Implementation](#custom-implementation)
+* [Logger rxjs operator](#logger-rxjs-operator)
+* [Logger decorator](#logger-decorator)
 * [License](#license)
 
 ---
@@ -149,6 +151,58 @@ const LOG_LEVEL: Level = isDevMode() ? Level.INFO : Level.ERROR;
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
+```
+
+# Logger rxjs operator
+
+- logger<T>(message: string,
+                            nextLevel: Level = Level.INFO,
+                            errorLevel: Level = Level.ERROR,
+                            completeLevel?: Level): MonoTypeOperatorFunction<T> 
+
+```typescript
+import { Component, OnInit } from '@angular/core';
+import { logger } from '@ngx-toolkit/logger';
+import { timer } from 'rxjs';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent implements OnInit {
+  constructor() {}
+
+  ngOnInit() {
+    timer(1000, 2000).pipe(
+      logger('timer')
+    ).subscribe();
+  }
+}
+```
+
+# Logger decorator
+
+- Log(message?: string, level: Level = Level.INFO)
+- Debug(message?: string) : Alias of Log(message?: string, Level.DEBUG)
+
+```typescript
+import { Component, OnInit } from '@angular/core';
+import { Debug } from '@ngx-toolkit/logger';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent implements OnInit {
+  constructor() {}
+
+  @Debug()
+  action(param: string) {
+    return "result";
+  }
+}
 ```
 
 ----

@@ -23,6 +23,7 @@
     "url": "https://github.com/dewizz/ngx-toolkit/issues"
   },
   "peerDependencies": {
-    "@angular/core": "^7.0.0"
+    "@angular/core": "^7.0.0",
+    "rxjs": "^6.3.3"
   }
 }
