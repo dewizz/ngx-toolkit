@@ -11,14 +11,6 @@ describe('LoggerModule', () => {
     expect(new LoggerModule()).toBeDefined();
   });
 
-  it('should not instantiate service', () => {
-    TestBed.configureTestingModule({imports: [LoggerModule.forRoot(null, ConsoleLoggerService)]});
-
-    const service: LoggerService = TestBed.get(LoggerService);
-    expect(service instanceof ConsoleLoggerService).toBeFalsy();
-    expect(service instanceof LoggerService).toBeTruthy();
-  });
-
   it('should instantiate service', () => {
     TestBed.configureTestingModule({imports: [LoggerModule.forRoot(Level.LOG, ConsoleLoggerService)]});
 

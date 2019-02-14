@@ -1,4 +1,4 @@
-import {APP_INITIALIZER, ModuleWithProviders, NgModule, Provider, Type} from '@angular/core';
+import {APP_INITIALIZER, ModuleWithProviders, NgModule, Type} from '@angular/core';
 import {ConsoleLoggerService} from './console-logger.service';
 import {Level} from './level.model';
 import {LOGGER_LEVEL} from './level.token';
@@ -13,25 +13,24 @@ export function setupLoggerDecorator(loggerService: LoggerService) {
 @NgModule()
 export class LoggerModule {
   static forRoot(level: Level = null, provider: Type<LoggerService> = ConsoleLoggerService): ModuleWithProviders {
-    let providers: Provider[];
-    if (level) {
-      providers = [{provide: LOGGER_LEVEL, useValue: level}, {provide: LoggerService, useClass: provider}];
-    } else {
-      providers = [LoggerService];
-    }
-
-    providers.push(
-      {
-        provide: APP_INITIALIZER,
-        useFactory: setupLoggerDecorator,
-        deps: [LoggerService],
-        multi: true
-      }
-    );
-
     return {
       ngModule: LoggerModule,
-      providers: providers
+      providers: [
+        {
+          provide: LOGGER_LEVEL,
+          useValue: level
+        },
+        {
+          provide: LoggerService,
+          useClass: provider
+        },
+        {
+          provide: APP_INITIALIZER,
+          useFactory: setupLoggerDecorator,
+          deps: [LoggerService],
+          multi: true
+        }
+      ]
     };
   }
 }
