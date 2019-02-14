@@ -75,6 +75,7 @@ export interface Page<T> {
 }
 
 export type Direction = 'ASC' | 'DESC';
+export type NullHandling = 'NATIVE' | 'NULLS_FIRST' | 'NULLS_LAST';
 export const DEFAULT_DIRECTION: Direction = 'ASC';
 
 export class Sort {
@@ -108,4 +109,5 @@ export class Sort {
 export interface Order {
   property: string;
   direction: Direction;
+  nullHandlingHint?: NullHandling;
 }
