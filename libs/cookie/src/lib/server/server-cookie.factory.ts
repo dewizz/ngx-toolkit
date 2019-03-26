@@ -2,10 +2,12 @@ import {CookieFactory} from '../cookie.service';
 import {CookieOptions} from '../cookie.model';
 
 export class ServerCookieFactory implements CookieFactory {
-  private cookies: { [key in string]: string };
+  private cookies: { [key in string]: string } = {};
 
   constructor(request: any, private response: any) {
-    this.cookies = Object.assign({}, request.cookies);
+    if (request && request.headers) {
+      this.cookies = Object.assign({}, request.headers.cookie || {});
+    }
   }
 
   getAll(): { [p: string]: string } {
