@@ -1,7 +1,7 @@
 import { Inject, Injectable } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { CookieFactory } from '../cookie.service';
-import { CookieOptions } from '../cookie.model';
+import { CookieOptions, cookiesStrToObj } from '../cookie.model';
 
 @Injectable()
 export class BrowserCookieFactory implements CookieFactory {
@@ -14,13 +14,7 @@ export class BrowserCookieFactory implements CookieFactory {
     const cookiesStr: string = this.document.cookie;
     if (this.lastCookies !== cookiesStr) {
       this.lastCookies = cookiesStr;
-
-      const cookies: { [key in string]: string } = {};
-      cookiesStr.split('; ').forEach(cookie => {
-        const cookieSplited: string[] = cookie.split('=');
-        cookies[decodeURIComponent(cookieSplited[0])] = decodeURIComponent(cookieSplited[1]);
-      });
-      this.cookies = cookies;
+      this.cookies = cookiesStrToObj(cookiesStr);
     }
     return this.cookies;
   }
