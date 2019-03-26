@@ -1,4 +1,4 @@
-export class CookieOptions {
+export interface CookieOptions {
   /**
    * The path from where the cookie will be readable.
    */
@@ -21,4 +21,21 @@ export class CookieOptions {
    * If true, the cookie will be transmitted only over secure protocol as https.
    */
   secure?: boolean;
+}
+
+/**
+ * Convert cookies string to object
+ * @param cookiesStr
+ */
+export function cookiesStrToObj(cookiesStr: string): { [key in string]: string } {
+  const cookies: { [key in string]: string } = {};
+  if (!cookiesStr) {
+    return cookies;
+  }
+
+  cookiesStr.split('; ').forEach(cookie => {
+    const cookieSplited: string[] = cookie.split('=');
+    cookies[decodeURIComponent(cookieSplited[0])] = decodeURIComponent(cookieSplited[1]);
+  });
+  return cookies;
 }

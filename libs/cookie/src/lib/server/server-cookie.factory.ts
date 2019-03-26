@@ -1,12 +1,12 @@
 import {CookieFactory} from '../cookie.service';
-import {CookieOptions} from '../cookie.model';
+import {CookieOptions, cookiesStrToObj} from '../cookie.model';
 
 export class ServerCookieFactory implements CookieFactory {
   private cookies: { [key in string]: string } = {};
 
   constructor(request: any, private response: any) {
     if (request && request.headers) {
-      this.cookies = Object.assign({}, request.headers.cookie || {});
+      this.cookies = cookiesStrToObj(request.headers.cookie);
     }
   }
 
