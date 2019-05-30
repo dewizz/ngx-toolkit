@@ -34,6 +34,7 @@ describe('CacheDecorator', () => {
   it('should throw an error if no cacheManager declared', () => {
     const bean: CacheBean = new CacheBean();
 
+    initCacheManager(null);
     expect(function() {
       bean.put(1, 2);
     }).toThrowError();
