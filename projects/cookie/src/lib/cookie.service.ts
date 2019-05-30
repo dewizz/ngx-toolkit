@@ -1,6 +1,6 @@
-import { Inject, Injectable, Optional } from '@angular/core';
-import { CookieOptions } from './cookie.model';
-import { COOKIE_OPTIONS } from './cookie.token';
+import {Inject, Injectable, Optional} from '@angular/core';
+import {CookieOptions} from './cookie.model';
+import {COOKIE_OPTIONS} from './cookie.token';
 
 export const DATE_MAX_EXPIRES: Date = new Date('Fri, 31 Dec 9999 23:59:59 GMT');
 export const DEFAULT_COOKIE_OPTIONS: CookieOptions = {
@@ -27,7 +27,7 @@ export class CookieService {
   constructor(
     @Optional()
     @Inject(COOKIE_OPTIONS)
-    cookieOptions: CookieOptions,
+      cookieOptions: CookieOptions,
     private cookieFactory: CookieFactory
   ) {
     this.cookieOptions = cookieOptions || DEFAULT_COOKIE_OPTIONS;

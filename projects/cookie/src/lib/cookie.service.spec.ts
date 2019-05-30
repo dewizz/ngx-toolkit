@@ -1,5 +1,5 @@
-import { CookieFactory, CookieService, DATE_MAX_EXPIRES } from './cookie.service';
-import { BrowserCookieFactory } from './browser/browser-cookie.factory';
+import {CookieFactory, CookieService, DATE_MAX_EXPIRES} from './cookie.service';
+import {BrowserCookieFactory} from './browser/browser-cookie.factory';
 
 describe('CookieService', () => {
   let service: CookieService;
@@ -55,12 +55,12 @@ describe('CookieService', () => {
     spyOn(factory, 'save');
 
     service.setItem('test', 'test');
-    expect(factory.save).toHaveBeenCalledWith('test', 'test', { path: '/', expires: DATE_MAX_EXPIRES });
+    expect(factory.save).toHaveBeenCalledWith('test', 'test', {path: '/', expires: DATE_MAX_EXPIRES});
 
-    service.setItem('test', 'test', { path: '/toto' });
-    expect(factory.save).toHaveBeenCalledWith('test', 'test', { path: '/toto', expires: DATE_MAX_EXPIRES });
+    service.setItem('test', 'test', {path: '/toto'});
+    expect(factory.save).toHaveBeenCalledWith('test', 'test', {path: '/toto', expires: DATE_MAX_EXPIRES});
 
-    service.setItem('test', 'test', { path: '/toto', domain: 'dewizz.com' });
+    service.setItem('test', 'test', {path: '/toto', domain: 'dewizz.com'});
     expect(factory.save).toHaveBeenCalledWith('test', 'test', {
       path: '/toto',
       expires: DATE_MAX_EXPIRES,

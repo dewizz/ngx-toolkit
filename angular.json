@@ -328,6 +328,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "ngx-toolkit"
 }

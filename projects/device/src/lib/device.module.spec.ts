@@ -1,7 +1,7 @@
-import { TestBed } from '@angular/core/testing';
-import { DeviceModule } from './device.module';
-import { Device, DevicePlatform } from './device.model';
-import { DEVICE, USER_AGENT } from './device.token';
+import {TestBed} from '@angular/core/testing';
+import {DeviceModule} from './device.module';
+import {Device, DevicePlatform} from './device.model';
+import {DEVICE, USER_AGENT} from './device.token';
 
 describe('DeviceModule', () => {
   it('should work', () => {
@@ -9,7 +9,7 @@ describe('DeviceModule', () => {
   });
 
   it('should has a device', () => {
-    TestBed.configureTestingModule({ imports: [DeviceModule.forRoot()] });
+    TestBed.configureTestingModule({imports: [DeviceModule.forRoot()]});
 
     const device: Device = TestBed.get(DEVICE);
     expect(device).toBeDefined();

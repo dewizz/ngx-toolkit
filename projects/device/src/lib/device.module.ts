@@ -1,7 +1,7 @@
-import { ModuleWithProviders, NgModule, Optional } from '@angular/core';
-import { Device } from './device.model';
-import { DEVICE, USER_AGENT } from './device.token';
-import { DeviceService } from './device.service';
+import {ModuleWithProviders, NgModule, Optional} from '@angular/core';
+import {Device} from './device.model';
+import {DEVICE, USER_AGENT} from './device.token';
+import {DeviceService} from './device.service';
 
 export function deviceResolverFactory(userAgent?: string): Device {
   if (!userAgent && window) {

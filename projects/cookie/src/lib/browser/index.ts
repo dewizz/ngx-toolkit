@@ -1,1 +1,1 @@
-export { BrowserCookieFactory } from './browser-cookie.factory';
+export {BrowserCookieFactory} from './browser-cookie.factory';

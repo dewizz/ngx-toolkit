@@ -1,4 +1,4 @@
-import { Queue } from './queue.decorator';
+import {Queue} from './queue.decorator';
 
 /**
  * Wait for a Promise / Subscription before to be re-executed

@@ -1,4 +1,4 @@
-import { Device, DevicePlatform, DeviceType } from './device.model';
+import {Device, DevicePlatform, DeviceType} from './device.model';
 
 /**
  * see https://github.com/spring-projects/spring-mobile
