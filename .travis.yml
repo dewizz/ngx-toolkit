@@ -13,14 +13,15 @@ notifications:
   email: false
 
 node_js:
-  - '8'
+  - '10.15'
 
 branches:
-    except:
-      - /^v\d+\.\d+\.\d+$/
+  except:
+    - /^v\d+\.\d+\.\d+$/
 
 before_install:
   - export CHROME_BIN=chromium-browser
+  - export NG_CLI_ANALYTICS=ci
 
 before_script:
   - export DISPLAY=:99.0
@@ -29,4 +30,4 @@ before_script:
   - npm install coveralls
 
 after_success:
-  - cat ./coverage/lcov-*.info | ./node_modules/coveralls/bin/coveralls.js
+  - cat ./coverage/*/lcov.info | ./node_modules/coveralls/bin/coveralls.js

@@ -16,12 +16,12 @@
 # Packages
 The packages from this repository are published as scoped packages under [@ngx-toolkit](https://www.npmjs.com/org/ngx-toolkit)
 
-- [@ngx-toolkit/cache ](https://github.com/dewizz/ngx-toolkit/blob/master/libs/cache/README.md) - Cache Service
-- [@ngx-toolkit/cookie](https://github.com/dewizz/ngx-toolkit/blob/master/libs/cookie/README.md) - Cookie Service
-- [@ngx-toolkit/device](https://github.com/dewizz/ngx-toolkit/blob/master/libs/device/README.md) - Device detection
-- [@ngx-toolkit/logger](https://github.com/dewizz/ngx-toolkit/blob/master/libs/logger/README.md) - Logger Service 
-- [@ngx-toolkit/spring](https://github.com/dewizz/ngx-toolkit/blob/master/libs/spring/README.md) - Spring Utilities
-- [@ngx-toolkit/utils](https://github.com/dewizz/ngx-toolkit/blob/master/libs/utils/README.md) - Common Utilities
+- [@ngx-toolkit/cache ](https://github.com/dewizz/ngx-toolkit/blob/master/projects/cache/README.md) - Cache Service
+- [@ngx-toolkit/cookie](https://github.com/dewizz/ngx-toolkit/blob/master/projects/cookie/README.md) - Cookie Service
+- [@ngx-toolkit/device](https://github.com/dewizz/ngx-toolkit/blob/master/projects/device/README.md) - Device detection
+- [@ngx-toolkit/logger](https://github.com/dewizz/ngx-toolkit/blob/master/projects/logger/README.md) - Logger Service 
+- [@ngx-toolkit/spring](https://github.com/dewizz/ngx-toolkit/blob/master/projects/spring/README.md) - Spring Utilities
+- [@ngx-toolkit/utils](https://github.com/dewizz/ngx-toolkit/blob/master/projects/utils/README.md) - Common Utilities
 
 ----
 
