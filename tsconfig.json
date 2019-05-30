@@ -5,18 +5,29 @@
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
+    "module": "esnext",
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "target": "es5",
+    "importHelpers": true,
+    "target": "es2015",
     "typeRoots": [
       "node_modules/@types"
     ],
     "lib": [
-      "es2017",
+      "es2018",
       "dom"
     ],
     "paths": {
+      "core-js/es7/reflect": [
+        "node_modules/core-js/proposals/reflect-metadata"
+      ],
+      "core-js/es6/*": [
+        "node_modules/core-js/es"
+      ],
+      "core-js/es7/*": [
+        "node_modules/core-js/es"
+      ],
       "cookie": [
         "dist/cookie"
       ],
@@ -40,6 +51,18 @@
       ],
       "spring/*": [
         "dist/spring/*"
+      ],
+      "cache": [
+        "dist/cache"
+      ],
+      "cache/*": [
+        "dist/cache/*"
+      ],
+      "utils": [
+        "dist/utils"
+      ],
+      "utils/*": [
+        "dist/utils/*"
       ]
     }
   }

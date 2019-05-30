@@ -1,0 +1,30 @@
+{
+  "name": "@ngx-toolkit/utils",
+  "version": "0.0.0-PLACEHOLDER",
+  "description": "Angular common utilities",
+  "homepage": "https://github.com/dewizz/ngx-toolkit",
+  "license": "MIT",
+  "author": "Dewizz",
+  "keywords": [
+    "angular",
+    "aot",
+    "ngx",
+    "ng2",
+    "ng",
+    "ngx-toolkit",
+    "annotation",
+    "decorator",
+    "utils",
+    "utilities"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dewizz/ngx-toolkit"
+  },
+  "bugs": {
+    "url": "https://github.com/dewizz/ngx-toolkit/issues"
+  },
+  "peerDependencies": {
+    "@angular/core": "^8.0.0"
+  }
+}
