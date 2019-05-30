@@ -12,7 +12,7 @@ export class Deferred<T> {
       this.reject = reject;
     });
 
-    Object.freeze(<Deferred<any>>this);
+    Object.freeze(<Deferred<any>> this);
   }
 }
 

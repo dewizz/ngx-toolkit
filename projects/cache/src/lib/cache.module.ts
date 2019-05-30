@@ -1,8 +1,8 @@
-import {ModuleWithProviders, NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
+import {ModuleWithProviders, NgModule} from '@angular/core';
 import {initCacheManager} from './cache.instance';
-import {SimpleCacheManager} from './simple-cache.manager';
 import {Cache} from './cache.model';
+import {SimpleCacheManager} from './simple-cache.manager';
 
 @NgModule({
   imports: [CommonModule]

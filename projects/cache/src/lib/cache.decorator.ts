@@ -1,6 +1,6 @@
 import 'reflect-metadata/Reflect';
-import {Cache} from './cache.model';
 import {getCacheManager} from './cache.instance';
+import {Cache} from './cache.model';
 
 export const METADATA_KEY_CACHE_DEFAULTS = '_cache_defaults';
 export const METADATA_KEY_CACHE_KEYS = '_cache_keys';
@@ -39,7 +39,7 @@ export function CacheResult(params?: CacheParams): MethodDecorator {
 
   return (target: Object, propertyKey: string | symbol, descriptor: TypedPropertyDescriptor<any>): TypedPropertyDescriptor<any> => {
     const originalMethod = descriptor.value;
-    descriptor.value = function (...args: any[]) {
+    descriptor.value = function(...args: any[]) {
       const cache: Cache = getCache(target, params);
       const cacheKey: string = getCacheKey(target, propertyKey, args);
 
@@ -83,7 +83,7 @@ export function CachePut(params?: CacheParamsInvoc): MethodDecorator {
 
   return (target: Object, propertyKey: string | symbol, descriptor: TypedPropertyDescriptor<any>): TypedPropertyDescriptor<any> => {
     const originalMethod = descriptor.value;
-    descriptor.value = function (...args: any[]) {
+    descriptor.value = function(...args: any[]) {
       const cache: Cache = getCache(target, params);
       const indexValue: number = Reflect.getMetadata(`${METADATA_KEY_CACHE_VALUE}_${propertyKey.toString()}`, target, propertyKey);
       const cacheKey: string = getCacheKey(target, propertyKey, args, indexValue);
@@ -127,7 +127,7 @@ export function CacheRemove(params?: CacheParamsInvoc): MethodDecorator {
 
   return (target: Object, propertyKey: string | symbol, descriptor: TypedPropertyDescriptor<any>): TypedPropertyDescriptor<any> => {
     const originalMethod = descriptor.value;
-    descriptor.value = function (...args: any[]) {
+    descriptor.value = function(...args: any[]) {
       const cache: Cache = getCache(target, params);
       const cacheKey: string = getCacheKey(target, propertyKey, args);
 
@@ -160,7 +160,7 @@ export function CacheRemoveAll(params?: CacheParamsInvoc): MethodDecorator {
 
   return (target: Object, propertyKey: string | symbol, descriptor: TypedPropertyDescriptor<any>): TypedPropertyDescriptor<any> => {
     const originalMethod = descriptor.value;
-    descriptor.value = function (...args: any[]) {
+    descriptor.value = function(...args: any[]) {
       const cache: Cache = getCache(target, params);
       if (!params.afterInvocation) {
         cache.clear();

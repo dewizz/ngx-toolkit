@@ -1,5 +1,5 @@
-import {LoggerService} from './logger.service';
 import {Level} from './level.model';
+import {LoggerService} from './logger.service';
 
 export interface LoggerDecoratorData {
   loggerService?: LoggerService;
@@ -14,7 +14,7 @@ export function Debug(message?: string): MethodDecorator {
 export function Log(message?: string, level: Level = Level.INFO): MethodDecorator {
   return (target: Object, propertyKey: string | symbol, descriptor: TypedPropertyDescriptor<any>): TypedPropertyDescriptor<any> => {
     const originalMethod = descriptor.value;
-    descriptor.value = function (...args: any[]) {
+    descriptor.value = function(...args: any[]) {
       const result = originalMethod.apply(this, args);
       if (LOGGER_DECORATOR_DATA.loggerService) {
         LOGGER_DECORATOR_DATA.loggerService.logLevel(level, message || `Call ${propertyKey.toString()}`, args, result);

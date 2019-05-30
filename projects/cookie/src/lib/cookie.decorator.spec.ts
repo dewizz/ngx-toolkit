@@ -1,6 +1,6 @@
+import {BrowserCookieFactory} from './browser';
 import {Cookie, COOKIE_DECORATOR_DATA} from './cookie.decorator';
 import {CookieService} from './cookie.service';
-import {BrowserCookieFactory} from './browser';
 
 describe('CookieDecorator', () => {
   beforeEach(() => {

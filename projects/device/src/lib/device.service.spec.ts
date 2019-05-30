@@ -1,5 +1,5 @@
-import {DeviceService} from './device.service';
 import {Device, DevicePlatform, DeviceType} from './device.model';
+import {DeviceService} from './device.service';
 
 describe('DeviceService', () => {
   it('devices is mobiles', () => {

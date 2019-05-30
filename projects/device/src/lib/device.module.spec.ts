@@ -1,6 +1,6 @@
 import {TestBed} from '@angular/core/testing';
-import {DeviceModule} from './device.module';
 import {Device, DevicePlatform} from './device.model';
+import {DeviceModule} from './device.module';
 import {DEVICE, USER_AGENT} from './device.token';
 
 describe('DeviceModule', () => {

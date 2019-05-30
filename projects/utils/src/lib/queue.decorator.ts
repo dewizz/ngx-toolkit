@@ -1,5 +1,5 @@
-import {Deferred, isPromise} from './functions';
 import {Subscription} from 'rxjs';
+import {Deferred, isPromise} from './functions';
 
 export interface QueueData {
   queue: Function[];
@@ -11,7 +11,7 @@ export interface QueueData {
  * /!\ the method result is modified => Return a Promise
  */
 export function Queue(limit?: number, name?: string): MethodDecorator {
-  return function (
+  return function(
     target: Object,
     propertyKey: string | symbol,
     descriptor: TypedPropertyDescriptor<any>
@@ -25,7 +25,7 @@ export function Queue(limit?: number, name?: string): MethodDecorator {
     const originalMethod = descriptor.value;
 
     // Change method
-    descriptor.value = function (...args: any[]) {
+    descriptor.value = function(...args: any[]) {
       // Push Future call
       const deferred: Deferred<any> = new Deferred<any>();
 

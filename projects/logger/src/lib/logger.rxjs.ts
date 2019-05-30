@@ -1,7 +1,7 @@
 import {MonoTypeOperatorFunction} from 'rxjs';
 import {tap} from 'rxjs/operators';
-import {LOGGER_DECORATOR_DATA} from './logger.decorator';
 import {Level} from './level.model';
+import {LOGGER_DECORATOR_DATA} from './logger.decorator';
 
 export function logger<T>(message: string,
                           nextLevel: Level = Level.INFO,

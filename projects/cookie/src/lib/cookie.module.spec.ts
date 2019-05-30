@@ -1,7 +1,7 @@
 import {ApplicationInitStatus} from '@angular/core';
 import {TestBed} from '@angular/core/testing';
-import {CookieModule} from './cookie.module';
 import {COOKIE_DECORATOR_DATA} from './cookie.decorator';
+import {CookieModule} from './cookie.module';
 
 describe('CookieModule', () => {
   it('should work', () => {

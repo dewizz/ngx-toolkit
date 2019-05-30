@@ -1,7 +1,7 @@
 import {TestBed} from '@angular/core/testing';
+import {getCacheManager, initCacheManager} from './cache.instance';
 import {CacheModule} from './cache.module';
 import {MemoryCache} from './impl/memory-cache';
-import {getCacheManager, initCacheManager} from './cache.instance';
 
 describe('CacheModule', () => {
   it('should work', () => {

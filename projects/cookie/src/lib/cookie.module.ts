@@ -1,10 +1,10 @@
-import {APP_INITIALIZER, ModuleWithProviders, NgModule} from '@angular/core';
 import {DOCUMENT} from '@angular/common';
-import {CookieFactory, CookieService} from './cookie.service';
-import {CookieOptions} from './cookie.model';
-import {COOKIE_DECORATOR_DATA} from './cookie.decorator';
-import {COOKIE_OPTIONS} from './cookie.token';
+import {APP_INITIALIZER, ModuleWithProviders, NgModule} from '@angular/core';
 import {BrowserCookieFactory} from './browser/index';
+import {COOKIE_DECORATOR_DATA} from './cookie.decorator';
+import {CookieOptions} from './cookie.model';
+import {CookieFactory, CookieService} from './cookie.service';
+import {COOKIE_OPTIONS} from './cookie.token';
 
 export function setupCookieDecorator(cookieService: CookieService) {
   COOKIE_DECORATOR_DATA.cookieService = cookieService;

@@ -1,16 +1,8 @@
-import {
-  CacheDefaults,
-  CacheKey,
-  CachePut,
-  CacheRemove,
-  CacheRemoveAll,
-  CacheResult,
-  CacheValue
-} from './cache.decorator';
+import {CacheDefaults, CacheKey, CachePut, CacheRemove, CacheRemoveAll, CacheResult, CacheValue} from './cache.decorator';
 import {initCacheManager} from './cache.instance';
-import {SimpleCacheManager} from './simple-cache.manager';
 import {MemoryCache} from './impl/memory-cache';
 import {StorageCache} from './impl/storage-cache';
+import {SimpleCacheManager} from './simple-cache.manager';
 
 @CacheDefaults('cacheBean')
 class CacheBean {
@@ -42,7 +34,7 @@ describe('CacheDecorator', () => {
   it('should throw an error if no cacheManager declared', () => {
     const bean: CacheBean = new CacheBean();
 
-    expect(function () {
+    expect(function() {
       bean.put(1, 2);
     }).toThrowError();
   });
@@ -51,7 +43,7 @@ describe('CacheDecorator', () => {
     const bean: CacheBean = new CacheBean();
 
     initCacheManager(new SimpleCacheManager());
-    expect(function () {
+    expect(function() {
       bean.put(1, 2);
     }).toThrowError();
   });

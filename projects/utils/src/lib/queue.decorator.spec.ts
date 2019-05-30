@@ -1,6 +1,6 @@
-import {Queue} from './queue.decorator';
 import {Observable, Subscription, throwError, timer} from 'rxjs';
 import {concatMap, delay, tap} from 'rxjs/operators';
+import {Queue} from './queue.decorator';
 
 const WAIT_TIME = 50;
 const QUEUE_NUMBER = 2;

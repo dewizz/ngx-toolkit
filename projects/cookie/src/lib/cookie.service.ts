@@ -50,11 +50,11 @@ export class CookieService {
 
     switch (expires.constructor) {
       case Number:
-        return expires === Infinity ? DATE_MAX_EXPIRES : new Date(<number>expires * 1000 + Date.now());
+        return expires === Infinity ? DATE_MAX_EXPIRES : new Date(<number> expires * 1000 + Date.now());
       case String:
-        return new Date(<string>expires);
+        return new Date(<string> expires);
       default:
-        return <Date>expires;
+        return <Date> expires;
     }
   }
 

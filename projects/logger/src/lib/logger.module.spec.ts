@@ -1,10 +1,10 @@
 import {ApplicationInitStatus} from '@angular/core';
 import {TestBed} from '@angular/core/testing';
-import {LoggerModule} from './logger.module';
-import {LoggerService} from './logger.service';
-import {LOGGER_DECORATOR_DATA} from './logger.decorator';
 import {ConsoleLoggerService} from './console-logger.service';
 import {Level} from './level.model';
+import {LOGGER_DECORATOR_DATA} from './logger.decorator';
+import {LoggerModule} from './logger.module';
+import {LoggerService} from './logger.service';
 
 describe('LoggerModule', () => {
   it('should work', () => {

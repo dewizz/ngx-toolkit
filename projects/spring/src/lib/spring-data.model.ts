@@ -86,20 +86,20 @@ export class Sort {
       if (typeof orders === 'string') {
         this.orders = [
           {
-            property: <string>orders,
+            property: <string> orders,
             direction: direction
           }
         ];
       } else if (orders.length > 0) {
         if (typeof orders[0] === 'string') {
-          this.orders = (<string[]>orders).map(property => {
+          this.orders = (<string[]> orders).map(property => {
             return {
               property: property,
               direction: direction
             };
           });
         } else {
-          this.orders = <Order[]>orders;
+          this.orders = <Order[]> orders;
         }
       }
     }

@@ -1,5 +1,5 @@
-import {CookieFactory, CookieService, DATE_MAX_EXPIRES} from './cookie.service';
 import {BrowserCookieFactory} from './browser/browser-cookie.factory';
+import {CookieFactory, CookieService, DATE_MAX_EXPIRES} from './cookie.service';
 
 describe('CookieService', () => {
   let service: CookieService;

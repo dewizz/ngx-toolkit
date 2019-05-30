@@ -1,5 +1,5 @@
-import {CookieFactory} from '../cookie.service';
 import {CookieOptions, cookiesStrToObj} from '../cookie.model';
+import {CookieFactory} from '../cookie.service';
 
 export class ServerCookieFactory implements CookieFactory {
   private cookies: { [key in string]: string } = {};

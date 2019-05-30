@@ -1,7 +1,7 @@
-import {Inject, Injectable} from '@angular/core';
 import {DOCUMENT} from '@angular/common';
-import {CookieFactory} from '../cookie.service';
+import {Inject, Injectable} from '@angular/core';
 import {CookieOptions, cookiesStrToObj} from '../cookie.model';
+import {CookieFactory} from '../cookie.service';
 
 @Injectable()
 export class BrowserCookieFactory implements CookieFactory {
@@ -22,7 +22,7 @@ export class BrowserCookieFactory implements CookieFactory {
 
   save(key: string, data: string, options: CookieOptions): void {
     this.document.cookie = `${encodeURIComponent(key)}=${data ? encodeURIComponent(data) : ''}${
-      options.expires ? `; expires=${(<Date>options.expires).toUTCString()}` : ''
+      options.expires ? `; expires=${(<Date> options.expires).toUTCString()}` : ''
       }${options.domain ? `; domain=${options.domain}` : ''}${options.path ? `; path=${options.path}` : ''}${
       options.secure ? '; secure' : ''
       }`;

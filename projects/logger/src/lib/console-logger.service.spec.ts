@@ -1,11 +1,11 @@
-import {LoggerService} from './logger.service';
 import {ConsoleLoggerService} from './console-logger.service';
 import {Level} from './level.model';
+import {LoggerService} from './logger.service';
 
 describe('ConsoleLoggerService', () => {
   let service: LoggerService;
   const toSpy: any = {
-    log: function (message?: any, ...optionalParams: any[]) {
+    log: function(message?: any, ...optionalParams: any[]) {
       // NOTHING
     }
   };
@@ -15,7 +15,7 @@ describe('ConsoleLoggerService', () => {
     ['error', 'warn', 'info', 'debug', 'log'].forEach(level => {
       console[level] = (...args: any[]) => {
         toSpy.log.apply(toSpy, args);
-      }
+      };
     });
 
     spyOn(toSpy, 'log');

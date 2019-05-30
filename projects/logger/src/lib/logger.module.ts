@@ -2,8 +2,8 @@ import {APP_INITIALIZER, ModuleWithProviders, NgModule, Type} from '@angular/cor
 import {ConsoleLoggerService} from './console-logger.service';
 import {Level} from './level.model';
 import {LOGGER_LEVEL} from './level.token';
-import {LoggerService} from './logger.service';
 import {LOGGER_DECORATOR_DATA} from './logger.decorator';
+import {LoggerService} from './logger.service';
 
 export function setupLoggerDecorator(loggerService: LoggerService) {
   LOGGER_DECORATOR_DATA.loggerService = loggerService;
