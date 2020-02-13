@@ -7,10 +7,7 @@
   "author": "Dewizz",
   "keywords": [
     "angular",
-    "aot",
     "ngx",
-    "ng2",
-    "ng",
     "ngx-toolkit",
     "annotation",
     "decorator",
@@ -25,6 +22,7 @@
     "url": "https://github.com/dewizz/ngx-toolkit/issues"
   },
   "peerDependencies": {
-    "@angular/core": "^8.0.0"
+    "@angular/core": "^9.0.0",
+    "tslib": "^1.10.0"
   }
 }

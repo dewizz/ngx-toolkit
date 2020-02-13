@@ -1,124 +1,8 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1,
+  "version": 1, 
   "newProjectRoot": "projects",
   "projects": {
-    "ngx-toolkit": {
-      "projectType": "application",
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss"
-        }
-      },
-      "root": "",
-      "sourceRoot": "src",
-      "prefix": "app",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:browser",
-          "options": {
-            "outputPath": "dist/ngx-toolkit",
-            "index": "src/index.html",
-            "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "tsconfig.app.json",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.scss"
-            ],
-            "scripts": []
-          },
-          "configurations": {
-            "production": {
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
-                }
-              ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "extractCss": true,
-              "namedChunks": false,
-              "aot": true,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
-                }
-              ]
-            }
-          }
-        },
-        "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-            "browserTarget": "ngx-toolkit:build"
-          },
-          "configurations": {
-            "production": {
-              "browserTarget": "ngx-toolkit:build:production"
-            }
-          }
-        },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "ngx-toolkit:build"
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "src/test.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "tsconfig.spec.json",
-            "karmaConfig": "karma.conf.js",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.scss"
-            ],
-            "scripts": []
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "tsconfig.app.json",
-              "tsconfig.spec.json",
-              "e2e/tsconfig.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        },
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "ngx-toolkit:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "ngx-toolkit:serve:production"
-            }
-          }
-        }
-      }
-    },
     "cache": {
       "projectType": "library",
       "root": "projects/cache",
@@ -130,6 +14,11 @@
           "options": {
             "tsConfig": "projects/cache/tsconfig.lib.json",
             "project": "projects/cache/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/cache/tsconfig.lib.prod.json"
+            }
           }
         },
         "test": {
@@ -165,6 +54,11 @@
           "options": {
             "tsConfig": "projects/cookie/tsconfig.lib.json",
             "project": "projects/cookie/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/cookie/tsconfig.lib.prod.json"
+            }
           }
         },
         "test": {
@@ -200,6 +94,11 @@
           "options": {
             "tsConfig": "projects/device/tsconfig.lib.json",
             "project": "projects/device/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/device/tsconfig.lib.prod.json"
+            }
           }
         },
         "test": {
@@ -235,6 +134,11 @@
           "options": {
             "tsConfig": "projects/logger/tsconfig.lib.json",
             "project": "projects/logger/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/logger/tsconfig.lib.prod.json"
+            }
           }
         },
         "test": {
@@ -270,6 +174,11 @@
           "options": {
             "tsConfig": "projects/spring/tsconfig.lib.json",
             "project": "projects/spring/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/spring/tsconfig.lib.prod.json"
+            }
           }
         },
         "test": {
@@ -305,6 +214,11 @@
           "options": {
             "tsConfig": "projects/utils/tsconfig.lib.json",
             "project": "projects/utils/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/utils/tsconfig.lib.prod.json"
+            }
           }
         },
         "test": {
@@ -328,7 +242,6 @@
           }
         }
       }
-    }
-  },
-  "defaultProject": "ngx-toolkit"
+    }},
+  "defaultProject": "cache"
 }

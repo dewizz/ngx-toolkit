@@ -5,10 +5,10 @@
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
     "module": "esnext",
     "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
     "importHelpers": true,
     "target": "es2015",
     "typeRoots": [
@@ -19,51 +19,34 @@
       "dom"
     ],
     "paths": {
-      "core-js/es7/reflect": [
-        "node_modules/core-js/proposals/reflect-metadata"
-      ],
-      "core-js/es6/*": [
-        "node_modules/core-js/es"
-      ],
-      "core-js/es7/*": [
-        "node_modules/core-js/es"
-      ],
-      "cookie": [
-        "dist/cookie"
-      ],
-      "cookie/*": [
-        "dist/cookie/*"
-      ],
-      "device": [
-        "dist/device"
-      ],
-      "device/*": [
-        "dist/device/*"
-      ],
-      "logger": [
-        "dist/logger"
-      ],
-      "logger/*": [
-        "dist/logger/*"
-      ],
-      "spring": [
-        "dist/spring"
-      ],
-      "spring/*": [
-        "dist/spring/*"
-      ],
       "cache": [
+        "dist/cache/cache",
         "dist/cache"
       ],
-      "cache/*": [
-        "dist/cache/*"
+      "cookie": [
+        "dist/cookie/cookie",
+        "dist/cookie"
+      ],
+      "device": [
+        "dist/device/device",
+        "dist/device"
+      ],
+      "logger": [
+        "dist/logger/logger",
+        "dist/logger"
+      ],
+      "spring": [
+        "dist/spring/spring",
+        "dist/spring"
       ],
       "utils": [
+        "dist/utils/utils",
         "dist/utils"
-      ],
-      "utils/*": [
-        "dist/utils/*"
       ]
     }
+  },
+  "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true
   }
 }
