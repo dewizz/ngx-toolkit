@@ -1,11 +1,12 @@
+import {DOCUMENT} from '@angular/common';
 import {ModuleWithProviders, NgModule, Optional} from '@angular/core';
 import {Device} from './device.model';
 import {DeviceService} from './device.service';
 import {DEVICE, USER_AGENT} from './device.token';
 
-export function deviceResolverFactory(userAgent?: string): Device {
-  if (!userAgent && window) {
-    userAgent = window.navigator.userAgent;
+export function deviceResolverFactory(userAgent?: string, document?: any): Device {
+  if (!userAgent && document) {
+    userAgent = document.defaultView?.navigator?.userAgent;
   }
 
   return DeviceService.resolveDevice(userAgent);
@@ -23,7 +24,7 @@ export class DeviceModule {
         {
           provide: DEVICE,
           useFactory: deviceResolverFactory,
-          deps: [[new Optional(), USER_AGENT]]
+          deps: [[new Optional(), USER_AGENT], [new Optional(), DOCUMENT]]
         }
       ]
     };
