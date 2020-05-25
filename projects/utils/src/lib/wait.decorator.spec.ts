@@ -23,26 +23,25 @@ class ClassTest {
   }
 }
 
-function testIt(classTest: ClassTest, fn: Function, done: DoneFn, firstPassValue: number = 3, secondPassValue: number = 4) {
+function testIt(classTest: ClassTest, fn: Function, done: DoneFn, firstPassValue: number = 2, secondPassValue: number = 3) {
   fn.apply(classTest);
 
-  timer(WAIT_TIME / 2).subscribe(() => {
+  timer(WAIT_TIME * 1.1).subscribe(() => {
     fn.apply(classTest);
     fn.apply(classTest);
   });
 
-  timer(WAIT_TIME * 2.1).pipe(
+  timer(WAIT_TIME * 2.2).pipe(
     tap(() => {
       expect(classTest.incr).toEqual(firstPassValue);
 
       fn.apply(classTest);
     }),
     delay(WAIT_TIME * 1.1)
-  )
-    .subscribe(() => {
-      expect(classTest.incr).toEqual(secondPassValue);
-      done();
-    });
+  ).subscribe(() => {
+    expect(classTest.incr).toEqual(secondPassValue);
+    done();
+  });
 }
 
 describe('WaitDecorator', () => {
