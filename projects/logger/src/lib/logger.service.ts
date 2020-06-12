@@ -42,19 +42,19 @@ export class LoggerService {
   logLevel(level: Level, message?: any, ...optionalParams: any[]) {
     switch (level) {
       case Level.ERROR :
-        this.error(message, optionalParams);
+        this.error(message, ...optionalParams);
         break;
       case Level.WARN :
-        this.warn(message, optionalParams);
+        this.warn(message, ...optionalParams);
         break;
       case Level.INFO :
-        this.info(message, optionalParams);
+        this.info(message, ...optionalParams);
         break;
       case Level.DEBUG :
-        this.debug(message, optionalParams);
+        this.debug(message, ...optionalParams);
         break;
       case Level.LOG :
-        this.log(message, optionalParams);
+        this.log(message, ...optionalParams);
         break;
     }
   }
