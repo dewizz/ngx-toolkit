@@ -19,6 +19,6 @@ describe('LoggerDecorator', () => {
 
     const test: Test = new Test();
     expect(test.toto(1)).toBe(2);
-    expect(LOGGER_DECORATOR_DATA.loggerService.debug).toHaveBeenCalledWith('increment', [[1], 2]);
+    expect(LOGGER_DECORATOR_DATA.loggerService.debug).toHaveBeenCalledWith('increment', [1], 2);
   });
 });

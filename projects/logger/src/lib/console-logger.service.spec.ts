@@ -60,4 +60,12 @@ describe('ConsoleLoggerService', () => {
     service.log('log');
     expect(toSpy.log).not.toHaveBeenCalledWith('log');
   });
+
+  it('check console logger logLevel', () => {
+    service = new ConsoleLoggerService(Level.LOG);
+
+    const args: any = {data: {foo: 'bar'}};
+    service.logLevel(Level.INFO, 'test', args);
+    expect(toSpy.log).toHaveBeenCalledWith('test', args);
+  });
 });
