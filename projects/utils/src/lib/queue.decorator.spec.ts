@@ -63,7 +63,7 @@ function testIt(classTest: ClassTest, fn: Function, done: DoneFn, firstPassValue
     fn.apply(classTest);
   });
 
-  timer(WAIT_TIME * 2.1).pipe(
+  timer(WAIT_TIME * 3).pipe(
     tap(() => {
       expect(classTest.incr).toEqual(firstPassValue);
 

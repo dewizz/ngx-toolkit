@@ -2,12 +2,6 @@
 
 set -x
 
-# remove archives
-rm -rf dist/*
-
-# build libs
-npm run build:libs
-
 # get current version
 PACKAGE_VERSION=$(cat package.json \
   | grep version \
@@ -22,5 +16,6 @@ TFILE="/tmp/out.tmp.$$"
 for module in dist/*
 do
     sed "s/$PLACEHOLDER/$PACKAGE_VERSION/g" "$module/package.json" > $TFILE && mv $TFILE "$module/package.json"
+    cp LICENSE "$module/LICENSE"
     npm publish --access public "$module"
 done

@@ -3,8 +3,6 @@ import {Level} from './level.model';
 
 @Injectable()
 export class LoggerService {
-  constructor() {
-  }
 
   /**
    * Outputs an error message.

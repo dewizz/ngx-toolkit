@@ -31,7 +31,7 @@ export function Queue(limit?: number, name?: string): MethodDecorator {
 
       // Ignore next call
       if (limit && data.queue.length >= limit) {
-        deferred.reject('Queue is full');
+        deferred.resolve();
       } else {
         data.queue.push(() => {
           try {
@@ -53,7 +53,7 @@ export function Queue(limit?: number, name?: string): MethodDecorator {
 
         // Queue
         data.promise = data.promise
-        // Call
+          // Call
           .then(() => data.queue[0].apply(this))
           // Pop
           .then(() => data.queue.pop(), () => data.queue.pop());

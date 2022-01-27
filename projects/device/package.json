@@ -22,8 +22,10 @@
   "bugs": {
     "url": "https://github.com/dewizz/ngx-toolkit/issues"
   },
+  "dependencies": {
+    "tslib": "^2.0.0"
+  },
   "peerDependencies": {
-    "@angular/core": "^9.0.0",
-    "tslib": "^1.10.0"
+    "@angular/core": "^13.2.0"
   }
 }

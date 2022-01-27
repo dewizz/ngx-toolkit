@@ -178,8 +178,7 @@ export function CacheRemoveAll(params?: CacheParamsInvoc): MethodDecorator {
   };
 }
 
-function getDefaultParams<T>(cacheParams: CacheParams): T {
-  // @ts-ignore
+function getDefaultParams<T>(cacheParams: CacheParams): { afterInvocation: boolean } & CacheParams {
   return Object.assign({
     afterInvocation: true
   }, cacheParams || {});
@@ -197,7 +196,7 @@ function getCache(target: Object, params: CacheParams): Cache {
   return cache;
 }
 
-function getCacheKey(target: Object, propertyKey: string | symbol, args: any[], cacheValueIndex: number = -1): string {
+function getCacheKey(target: Object, propertyKey: string | symbol, args: any[], cacheValueIndex = -1): string {
   if (!args) {
     args = [];
   }

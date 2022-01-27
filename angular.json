@@ -1,6 +1,9 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1, 
+  "cli": {
+    "defaultCollection": "@angular-eslint/schematics"
+  },
+  "version": 1,
   "newProjectRoot": "projects",
   "projects": {
     "cache": {
@@ -10,7 +13,7 @@
       "prefix": "lib",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
             "tsConfig": "projects/cache/tsconfig.lib.json",
             "project": "projects/cache/ng-package.json"
@@ -25,19 +28,17 @@
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "main": "projects/cache/src/test.ts",
+            "polyfills": "projects/cache/src/polyfills.ts",
             "tsConfig": "projects/cache/tsconfig.spec.json",
             "karmaConfig": "projects/cache/karma.conf.js"
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
-            "tsConfig": [
-              "projects/cache/tsconfig.lib.json",
-              "projects/cache/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
+            "lintFilePatterns": [
+              "projects/cache/**/*.ts",
+              "projects/cache/**/*.html"
             ]
           }
         }
@@ -50,7 +51,7 @@
       "prefix": "lib",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
             "tsConfig": "projects/cookie/tsconfig.lib.json",
             "project": "projects/cookie/ng-package.json"
@@ -65,19 +66,17 @@
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "main": "projects/cookie/src/test.ts",
+            "polyfills": "projects/cookie/src/polyfills.ts",
             "tsConfig": "projects/cookie/tsconfig.spec.json",
             "karmaConfig": "projects/cookie/karma.conf.js"
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
-            "tsConfig": [
-              "projects/cookie/tsconfig.lib.json",
-              "projects/cookie/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
+            "lintFilePatterns": [
+              "projects/cookie/**/*.ts",
+              "projects/cookie/**/*.html"
             ]
           }
         }
@@ -90,7 +89,7 @@
       "prefix": "lib",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
             "tsConfig": "projects/device/tsconfig.lib.json",
             "project": "projects/device/ng-package.json"
@@ -105,19 +104,17 @@
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "main": "projects/device/src/test.ts",
+            "polyfills": "projects/device/src/polyfills.ts",
             "tsConfig": "projects/device/tsconfig.spec.json",
             "karmaConfig": "projects/device/karma.conf.js"
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
-            "tsConfig": [
-              "projects/device/tsconfig.lib.json",
-              "projects/device/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
+            "lintFilePatterns": [
+              "projects/device/**/*.ts",
+              "projects/device/**/*.html"
             ]
           }
         }
@@ -130,7 +127,7 @@
       "prefix": "lib",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
             "tsConfig": "projects/logger/tsconfig.lib.json",
             "project": "projects/logger/ng-package.json"
@@ -145,19 +142,17 @@
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "main": "projects/logger/src/test.ts",
+            "polyfills": "projects/logger/src/polyfills.ts",
             "tsConfig": "projects/logger/tsconfig.spec.json",
             "karmaConfig": "projects/logger/karma.conf.js"
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
-            "tsConfig": [
-              "projects/logger/tsconfig.lib.json",
-              "projects/logger/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
+            "lintFilePatterns": [
+              "projects/logger/**/*.ts",
+              "projects/logger/**/*.html"
             ]
           }
         }
@@ -170,7 +165,7 @@
       "prefix": "lib",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
             "tsConfig": "projects/spring/tsconfig.lib.json",
             "project": "projects/spring/ng-package.json"
@@ -185,19 +180,17 @@
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "main": "projects/spring/src/test.ts",
+            "polyfills": "projects/spring/src/polyfills.ts",
             "tsConfig": "projects/spring/tsconfig.spec.json",
             "karmaConfig": "projects/spring/karma.conf.js"
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
-            "tsConfig": [
-              "projects/spring/tsconfig.lib.json",
-              "projects/spring/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
+            "lintFilePatterns": [
+              "projects/spring/**/*.ts",
+              "projects/spring/**/*.html"
             ]
           }
         }
@@ -210,7 +203,7 @@
       "prefix": "lib",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
             "tsConfig": "projects/utils/tsconfig.lib.json",
             "project": "projects/utils/ng-package.json"
@@ -225,23 +218,22 @@
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "main": "projects/utils/src/test.ts",
+            "polyfills": "projects/utils/src/polyfills.ts",
             "tsConfig": "projects/utils/tsconfig.spec.json",
             "karmaConfig": "projects/utils/karma.conf.js"
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
-            "tsConfig": [
-              "projects/utils/tsconfig.lib.json",
-              "projects/utils/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
+            "lintFilePatterns": [
+              "projects/utils/**/*.ts",
+              "projects/utils/**/*.html"
             ]
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "cache"
 }

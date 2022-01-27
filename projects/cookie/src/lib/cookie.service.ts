@@ -76,7 +76,7 @@ export class CookieService {
    * Check whether a cookie exists in the current position.
    */
   hasItem(key: string): boolean {
-    return this.getAll().hasOwnProperty(key);
+    return Object.prototype.hasOwnProperty.call(this.getAll(), key);
   }
 
   /**

@@ -1,0 +1,41 @@
+name: CI
+on: [ push, pull_request ]
+jobs:
+  checks:
+    name: Linters
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '16'
+      - run: npm ci --ignore-scripts
+      - run: npm run lint
+  tests:
+    name: Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16.x
+      - name: npm install, npm run test
+          run: |
+            npm ci --ignore-scripts
+            npm run test
+            cat ./coverage/*/lcov.info > ./coverage/lcov.info
+      - name: Coveralls
+          uses: coverallsapp/github-action@master
+          with:
+            github-token: ${{ secrets.GITHUB_TOKEN }}
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '16'
+      - run: npm ci --ignore-scripts
+      - run: npm run build:libs
