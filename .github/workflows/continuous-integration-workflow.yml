@@ -20,15 +20,14 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 16.x
-      - name: npm install, npm run test
-          run: |
-            npm ci --ignore-scripts
-            npm run test
-            cat ./coverage/*/lcov.info > ./coverage/lcov.info
+      - run: |
+          npm ci --ignore-scripts
+          npm run test
+          cat ./coverage/*/lcov.info > ./coverage/lcov.info
       - name: Coveralls
-          uses: coverallsapp/github-action@master
-          with:
-            github-token: ${{ secrets.GITHUB_TOKEN }}
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
   build:
     name: Build
     runs-on: ubuntu-latest
