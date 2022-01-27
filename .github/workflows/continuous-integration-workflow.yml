@@ -28,8 +28,7 @@ jobs:
       - run: npm run test
       - run: npm install coveralls --save-dev
         if: ${{ matrix.node-version == '16.x' }}
-      - run: cat ./coverage/*/lcov.info | ./node_modules/coveralls/bin/coveralls.js
-      - run: codecov -f ./coverage/clover.xml -t ${{ secrets.CODECOV_TOKEN }} --commit=$GITHUB_SHA --branch=${GITHUB_REF##*/}
+      - run: cat ./coverage/*/lcov.info | ./node_modules/coveralls/bin/coveralls.js || true
         if: ${{ matrix.node-version == '16.x' }}
   build:
     name: Build
