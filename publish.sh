@@ -17,5 +17,5 @@ for module in dist/*
 do
     sed "s/$PLACEHOLDER/$PACKAGE_VERSION/g" "$module/package.json" > $TFILE && mv $TFILE "$module/package.json"
     cp LICENSE "$module/LICENSE"
-    npm publish --access public "$module"
+    npm publish --access public "./$module"
 done
