@@ -17,7 +17,7 @@ export class DeviceModule {
   /**
    * In root module to provide the DEVICE
    */
-  static forRoot(): ModuleWithProviders {
+  static forRoot(): ModuleWithProviders<DeviceModule> {
     return {
       ngModule: DeviceModule,
       providers: [

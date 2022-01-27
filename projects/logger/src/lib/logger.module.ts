@@ -12,7 +12,7 @@ export function setupLoggerDecorator(loggerService: LoggerService) {
 
 @NgModule()
 export class LoggerModule {
-  static forRoot(level: Level = null, provider: Type<LoggerService> = ConsoleLoggerService): ModuleWithProviders {
+  static forRoot(level: Level = null, provider: Type<LoggerService> = ConsoleLoggerService): ModuleWithProviders<LoggerModule> {
     return {
       ngModule: LoggerModule,
       providers: [

@@ -1,35 +1,23 @@
-import {HttpParameterCodec, HttpParams} from '@angular/common/http';
+import {HttpParams, HttpParamsOptions} from '@angular/common/http';
 
 export const DEFAULT_PAGEABLE_SIZE = 25;
 
 export class PageRequest {
-  page: number;
-  size: number;
-  sort: Sort;
+  readonly page: number;
+  readonly size: number;
+  readonly sort: Sort;
 
-  constructor(page: number = 0, size: number = DEFAULT_PAGEABLE_SIZE, sort?: Sort) {
+  constructor(page = 0, size: number = DEFAULT_PAGEABLE_SIZE, sort?: ISort) {
     this.page = page;
     this.size = size;
     this.sort = sort;
   }
 
   toHttpParams(
-    options: {
-      fromString?: string;
-      fromObject?: {
-        [param: string]: string | string[];
-      };
-      encoder?: HttpParameterCodec;
-    } = {} as {
-      fromString?: string;
-      fromObject?: {
-        [param: string]: string | string[];
-      };
-      encoder?: HttpParameterCodec;
-    }
+    options: HttpParamsOptions = {}
   ): HttpParams {
     let params: HttpParams = new HttpParams(options)
-    // Add page & size
+      // Add page & size
       .set('page', `${this.page}`)
       .set('size', `${this.size}`);
 
@@ -78,32 +66,36 @@ export type Direction = 'ASC' | 'DESC';
 export type NullHandling = 'NATIVE' | 'NULLS_FIRST' | 'NULLS_LAST';
 export const DEFAULT_DIRECTION: Direction = 'ASC';
 
-export class Sort {
-  orders: Order[];
+export class Sort implements ISort {
+  readonly orders: Order[];
 
   constructor(orders: string | string[] | Order[], direction: Direction = DEFAULT_DIRECTION) {
     if (orders) {
       if (typeof orders === 'string') {
         this.orders = [
           {
-            property: <string> orders,
-            direction: direction
+            property: orders ,
+            direction
           }
         ];
       } else if (orders.length > 0) {
         if (typeof orders[0] === 'string') {
-          this.orders = (<string[]> orders).map(property => {
+          this.orders = (orders as string[]).map(property => {
             return {
-              property: property,
-              direction: direction
+              property,
+              direction
             };
           });
         } else {
-          this.orders = <Order[]> orders;
+          this.orders = orders as Order[];
         }
       }
     }
   }
+}
+
+export interface ISort {
+  orders: Order[];
 }
 
 export interface Order {

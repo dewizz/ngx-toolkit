@@ -50,13 +50,12 @@ export function Wait(name?: string): MethodDecorator {
 
         // Execute
         data.promise = data.promise
-
           // Call
           .then(() => data.wait.apply(this))
           // Pop
           .then(() => data.wait = null, () => data.wait = null);
       } else {
-        deferred.reject('Wait: Function is running');
+        deferred.resolve();
       }
 
       // Return promise

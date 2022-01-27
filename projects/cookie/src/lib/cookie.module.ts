@@ -20,7 +20,7 @@ export class CookieModule {
   /**
    * In root module to provide the CookieService & CookieOptions
    */
-  static forRoot(cookieOptions?: CookieOptions): ModuleWithProviders {
+  static forRoot(cookieOptions?: CookieOptions): ModuleWithProviders<CookieOptions> {
     return {
       ngModule: CookieModule,
       providers: [

@@ -3,9 +3,9 @@ sudo: required
 notifications:
   email: false
 node_js:
-  - '10'
+  - '16'
 before_install:
-  - if [[ `npm -v` != 6* ]]; then npm i -g npm@6; fi
+  - if [[ `npm -v` != 8* ]]; then npm i -g npm@8; fi
 services:
   - xvfb
 addons:

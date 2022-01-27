@@ -11,7 +11,7 @@ export class CacheModule {
   /**
    * In root module to provide caches
    */
-  static forRoot(caches: Cache[]): ModuleWithProviders {
+  static forRoot(caches: Cache[]): ModuleWithProviders<CacheModule> {
     initCacheManager(new SimpleCacheManager(caches));
 
     return {
